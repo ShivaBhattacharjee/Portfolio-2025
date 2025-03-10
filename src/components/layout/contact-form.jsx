@@ -28,7 +28,7 @@ const formSchema = z.object({
 
 const ContactForm = ({ handleOnSubmit, isSubmitting }) => {
   // Define form
-  const form = useForm({
+const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       fullname: "",
