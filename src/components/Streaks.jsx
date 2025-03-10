@@ -154,7 +154,7 @@ const GitHubStreak = ({
 
       {/* Header */}
       <div className="relative z-0 border-b-4 border-white bg-[#1e2130] p-4 text-white">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap gap-2 items-center justify-between">
           <h2 className="flex items-center text-xl font-black uppercase tracking-tight">
             <Calendar size={24} className="mr-2" />
             <span className="bg-[#ff3e00] px-2 py-1">LAST 7 DAYS</span>
@@ -165,7 +165,7 @@ const GitHubStreak = ({
               <Button
                 variant="outline"
                 size="sm"
-                className="h-8 border-2 border-white bg-[#2a2e43] text-white"
+                className="h-8 border-2 border-white bg-[#2a2e43] w-full md:w-52 text-white"
               >
                 <Search size={14} className="mr-1" />
                 <span>@{username}</span>
@@ -224,8 +224,8 @@ const GitHubStreak = ({
         ) : (
           <>
             {/* Stats row */}
-            <div className="grid grid-cols-3 gap-4 bg-[#1e2130] p-4">
-              <div className="flex flex-col items-center border-2 border-white bg-[#171923] p-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 bg-[#1e2130] p-4">
+              <div className="flex flex-col flex-wrap items-center border-2 border-white bg-[#171923] p-4">
                 <div className="m-auto mb-1 flex text-sm font-bold uppercase tracking-wide text-white">
                   <Flame size={18} className="mr-2 text-[#ff5631]" />
                   CURRENT
