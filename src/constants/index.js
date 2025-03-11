@@ -53,7 +53,7 @@ export const experiences = [
     year: "Oct 2024 - Jan 2025",
     company: "TTIPL(Tracks and Towers Infratech Private Limited)",
     responsibility:
-      "Collaborated with designers and other developers to create new features and improve existing ones, and maintained Android applications using Java or Kotlin, as well as utilizing Android SDK tools such as Android Studio. Specifically, I worked on an internal ERP module, addressing and resolving existing bugs. I implemented S3 image upload functionality and developed new modules such as a billing system, enabling the company to bill existing vendors based on various parameters including advance amounts. Additionally, I integrated an in-app mail system using Resend for seamless communication.",
+      "Collaborated with designers and other developers to create new features and improve existing ones. Specifically, I worked on an internal ERP module, addressing and resolving existing bugs. I implemented S3 image upload functionality and developed new modules such as a billing system, enabling the company to bill existing vendors based on various parameters including advance amounts. Additionally, I integrated an in-app mail system using Resend for seamless communication.",
     techstacks: [
       "ReactJS",
       "NextJS",
