@@ -538,9 +538,9 @@ const GitHubStreak = ({
             {/* Chart */}
             <div className="border-t-2 border-white bg-[#1e2130] p-4">
               <div className="h-64 w-full border-2 border-white bg-[#171923] p-2">
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer>
                   <BarChart
-                  className="w-100vw h-full"
+                  className=" h-full"
                     data={streakData.lastWeekData}
                     margin={{ top: 20, right: 5, left: 5, bottom: 30 }}
                   >
