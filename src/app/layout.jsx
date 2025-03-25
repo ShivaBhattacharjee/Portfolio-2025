@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import NavigationBar from "@/components/sections/navigation";
 import Footer from "@/components/sections/footer";
 import FloatingSkull from "@/components/Floating";
+import OnekoCat from "@/components/OnekoCat";
 
 export const metadata = {
   title: {
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
         <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto]">
           <NavigationBar />
           <main className={goldmanFont.className}>
+            <OnekoCat/>
             {children}
             <FloatingSkull />
           </main>
