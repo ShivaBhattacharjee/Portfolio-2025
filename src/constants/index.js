@@ -65,11 +65,11 @@ export const experiences = [
     ],
   },
   {
-    role: "Founding Engineer",
+    role: "Co Founder and Software Engineer",
     year: "Jan 2025 - Present",
-    company: "Stealth Startup",
+    company: "Navdyut AI Tech and Research Labs Pvt. Ltd.",
     responsibility:
-      "Developed web application that makes creation of measurment books , running bill , and other construction related documents easy. Worked on the development of AI bassed rag system that can find values and other information regarding projects of various districts and states.",
+      "Led AI research, collaborating with universities like VIT to develop and launch a flagship fine-tuned Assamese chatbot on the 22B Mistral model, imbued with Assamese cultural awareness. This innovation garnered media attention, attracted 5,000 users with 800 active users, including paid subscribers, and secured a partnership with the Government of Assam. Navdyut AI's tools are now integral to various B2G tasks, including Assamese translation and computer vision applications, enhancing efficiency across multiple departments.",
     techstacks: [
       "ReactJS",
       "NextJS",
@@ -81,16 +81,86 @@ export const experiences = [
       "OpeanAI",
       "Vector DB",
       "TTS,",
+      "Langchain",
+      "LlamaIndex",
+      "Pinecone",
     ],
   },
 ];
 
 export const projects = [
+  
   {
+    title : "Single Sign On",
+    category: "Weekend Boredom",
+    description: "A project to implement Single Sign On (SSO) for my applications, created during an entrepreneurship event in my IIM Shillong dorm because the event was so boring I couldn't stay awake. made it so that i can add auth on my projects cause doing the same auth 100 times was boring and time consuming so yeah cooked this",
+    techstacks: ["NextJS", "Tailwind", "MongoDb", "NextAuth"],
+    status: "active",
+    link: "https://github.com/ShivaBhattacharjee/sso"
+  },
+  {
+    title : "Image Sonification",
+    category: "Research Project",
+    description: "This app converts images to audio and back , using NASA-inspired sonification. It embeds all image data directly in the sound, letting you recreate the picture from just the audio file. Essentially, it's \"audio DNA\" for images!.",
+    techstacks: ["Python", ],
+    status: "active",
+    link: "https://github.com/ShivaBhattacharjee/image-sonification"
+  },
+  {
+    title : "Object Detection",
+    category: "Research Project",
+    description: "A dynamic object detection system for identifying objects in images, built for large datasets and high accuracy.",
+    techstacks: ["Python", "YOLOv8", "Ultralytics"],
+    status: "active",
+    link: "https://github.com/ShivaBhattacharjee/object-detection"
+  },
+  {
+    title : "LendChain",
+    category: "Hackathon Project",
+    description : "A blockchain based money lending app made using rise in hackathon won 100$ grant for this it was a great exp learning solidity and deploying my first smart contract",
+    techstacks: ["Solidity", "NextJS", "Tailwind" , "Ethereum"],
+    status: "active",
+    link: "https://github.com/ShivaBhattacharjee/lending-blockchain"
+  },
+  {
+    category: "Hackathon Project",
+    title: "Waste Easy",
+    description:
+      "WasteEasy is an app to streamline waste management, focusing on classification and encouraging proper segregation with incentives. it had around 15k registred users and 1000 active users had to shut it down cause of no time and idk how to scale it to larger audience",
+    techstacks: ["NextJS", "Gemini", "Mongodb", "Tailwind"],
+    status: "active",
+    link: "https://github.com/shivabhattacharjee/wasteeasy",
+  },
+  {
+    category: "Side Project",
+    title: "Trim",
+    description:
+      "Simple url shorter created to shorten phishing links it was fun pranking college friends with it.",
+    techstacks: ["NextJS", "Tailwind", "MongoDb", ],
+    status: "active",
+    link: "https://github.com/shivabhattacharjee/trim",
+  },
+  {
+    category : "Side Project",
+    title : "Quibble",
+    description : "Quibble, a content generation bot , mostly used to write my English assignments and some emails",
+    techstacks : ["NextJS", "TypeScript", "Tailwind", "Gemini", "NextAuth"],
+    status: "active",
+    link : "https://github.com/shivabhattacharjee/quibble"
+  },
+  {
+    category : "Side Project",
+    title : "Synthia",
+    description : "Synthia is a project I made during engineering day at my college because I felt like making a language. I tried to make a brain rot parser and ended up making this.",
+    techstacks : ["Rust", "CLI", "Lexer", "Parser", "Interpreter"],
+    status: "active",
+    link : "https://github.com/shivabhattacharjee/synthia"
+  },
+    {
     category: "Side Project",
     title: "Animetrix",
     description:
-      "Anime Trix is a full stack anime streaming / downloading site developed in NEXTJS 13.5 and TYPESCRIPT that offers a vast collection of anime shows for streaming and downloading. With a user-friendly interface, you can easily find your favorite anime shows and watch them in high-definition quality.",
+      "Anime Trix is a full stack anime streaming / downloading site. It had around 15000 active users until it was discontinued due to legal issues. It was a great learning experience for me to learn to make an app without downtime.",
     techstacks: [
       "NextJS",
       "TypeScript",
@@ -99,50 +169,16 @@ export const projects = [
       "Nodemailer",
       "Tailwind",
     ],
+    status: "discontinued",
     link: "https://github.com/shivabhattacharjee/animetrix-next",
   },
   {
-    category: "Hackathon Project",
-    title: "Waste Easy",
-    description:
-      "As a winning project from the Envision Hackathon at ADTU, WasteEasy is an app designed to streamline waste management. It focuses on waste classification and encourages proper waste segregation. Users can earn points or coupons by utilizing WasteEasy for their waste disposal needs.",
-    techstacks: ["NextJS", "Gemini", "Mongodb", "Tailwind"],
-    link: "https://github.com/shivabhattacharjee/wasteeasy",
-  },
-  {
-    category: "Side Project",
-    title: "Trim",
-    description:
-      "Trim is a sleek and efficient URL shortener project developed using Next.js .  With Trim, users can easily shorten lengthy URLs into concise, manageable links, making sharing and distributing web addresses more convenient.",
-    techstacks: ["NextJS", "Tailwind", "MongoDb", ],
-    link: "https://github.com/shivabhattacharjee/trim",
-  },
-  {
     category : "Side Project",
-    title : "Quibble",
-    description : "Quibble, a content generation bot, simplifies and elevates your creative process developed in NEXTJS 14 and TYPESCRIPT. Whether crafting engaging blog posts, soulful song lyrics, or attention-grabbing Insta captions, Quibble's advanced algorithms seamlessly transform your ideas into polished, professional content.",
-    techstacks : ["NextJS", "TypeScript", "Tailwind", "Gemini", "NextAuth"],
-    link : "https://github.com/shivabhattacharjee/quibble"
-  },
-  {
-    category : "Side Project",
-    title : "Synthia",
-    description : "Synthia is a lightweight and beginner-friendly interpreted programming language developed in Rust. With a simple, intuitive syntax and a focus on ease of use, Synthia is perfect for both newcomers to programming and experienced developers looking for a flexible scripting language",
-    techstacks : ["Rust", "CLI", "Lexer", "Parser", "Interpreter"],
-    link : "https://github.com/shivabhattacharjee/synthia"
-  },
-  {
-    category : "Side Project",
-    title : "Recordify",
-    description : "Recordify is a chrome extension that allows users to record their screen and audio. It is developed in vanilla JavaScript . Users can record their screen and audio with a single click and save the recording as a webm file.",
-    techstacks : ["web-apis", "manifest", "extension", "chrome"],
-    link : "https://github.com/shivabhattacharjee/recordify"
-  },
-  {
-    category : "Side Project (No Longer Maintained)",
     title : "Muxik",
-    description : "Muxik is a music streaming and downloading platform developed on ReactJs. It provides users with a wide variety of songs, albums, playlists, and artists across different genres. Users can enjoy a seamless and immersive music listening experience through the platform.",
-    techstacks : ["Jio Saavn API", "Vite", "MongoDb"],
+    description : "Muxik is a music streaming and downloading platform. Made using a scrapped JioSaavn API, I created it because I couldn't afford Spotify. I shut it down because I got an internship and could finally afford Apple Music, LFG! 🔥",
+    techstacks : ["Vite", "MongoDb"],
+    status: "discontinued",
     link : "https://github.com/shivabhattacharjee/muxik"
   },
 ];
+

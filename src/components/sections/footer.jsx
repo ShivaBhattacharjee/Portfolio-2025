@@ -15,7 +15,7 @@ const Footer = () => {
     const fetchRepoDetails = async () => {
       try {
         const { data } = await axios.get(
-          "https://api.github.com/repos/shivabhattacharjee/2025-portfolio",
+          "https://api.github.com/repos/shivabhattacharjee/portfolio-2025",
         );
         setRepoDetails({
           stars: data.stargazers_count,

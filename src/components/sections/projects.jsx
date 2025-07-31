@@ -12,12 +12,17 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-const Projects = ({ category, title, description, techstacks, link }) => {
+const Projects = ({ category, title, description, techstacks, status, link }) => {
   return (
     <Card className="flex grow flex-col">
       <CardHeader>
         <>
-          <p className="text-xs font-medium">{category}</p>
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-medium">{category}</p>
+            <Badge variant={status} className="ml-2">
+              {status === 'active' ? 'Active' : 'Discontinued'}
+            </Badge>
+          </div>
           <h1 className="text-xl">{title}</h1>
         </>
       </CardHeader>

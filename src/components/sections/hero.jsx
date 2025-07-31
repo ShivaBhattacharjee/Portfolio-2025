@@ -18,10 +18,11 @@ const Hero = () => {
             className={`mb-6 flex flex-col gap-y-2 text-center md:text-start ${zenDots.className}`}
           >
             <h1 className={`text-4xl font-bold`}>Shiva Bhattacharjee</h1>
-            <h2 className={`text-lg font-medium`}>Full Stack Engineer</h2>
+            <h2 className={`text-lg font-medium`}>
+              Full Stack + AI Engineer & Part-time Researcher
+            </h2>
             <p className={`${zenDots.className}`}>
-              I am passionate about integrating functionality and design in
-              applications to create intuitive, user-friendly experiences.
+              I build functional and beautiful applications with intuitive UI/UX. I also research SLMs and computer vision, with 5+ research projects.
             </p>
           </div>
           <div
@@ -64,14 +65,7 @@ const Hero = () => {
             About Me
           </h5>
           <p className="mb-4">
-            A 19-year-old software engineer passionate about building
-            user-centric web applications. Currently a Founding Engineer at a
-            Stealth Startup, developing innovative solutions, with previous
-            experience at TTIPL, ConcertPal, and GITCS. Proven ability to
-            innovate, winning 5 hackathons. Proficient in ReactJS, NextJS,
-            Node.js, and enjoys creating projects like Animetrix, Waste Easy,
-            and Quibble. Outside of coding, I explore new tech, play video
-            games, and enjoy food and coffee
+            I&apos;m a 20-year-old Full Stack + AI Engineer and Part-time Researcher passionate about building innovative solutions. My expertise lies in developing and deploying full-stack applications with a focus on intuitive UI/UX, as well as conducting research in SLMs and Computer Vision. I have contributed to 5+ research projects, exploring applications of computer vision and SLMs, and developing fine-tuning pipelines for SLMs and LLMs. I am driven to create impactful technology that solves real-world problems.
           </p>
         </div>
       </div>
@@ -81,3 +75,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
