@@ -7,8 +7,10 @@ export const metadata = {
 
 export default function About() {
   return (
-    <Layout>
-      <Hero />
-    </Layout>
+    <div className=" overflow-x-hidden">
+      <Layout>
+        <Hero />
+      </Layout>
+    </div>
   );
 }

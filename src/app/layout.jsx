@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
       <body>
-        <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto]">
+        <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto] overflow-x-hidden">
           <NavigationBar />
           <main className={goldmanFont.className}>
             <OnekoCat/>
