@@ -160,7 +160,7 @@ export const projects = [
     category: "Side Project",
     title: "Animetrix",
     description:
-      "Anime Trix is a full stack anime streaming / downloading site. It had around 15000 active users until it was discontinued due to legal issues. It was a great learning experience for me to learn to make an app without downtime.",
+      "Anime Trix is a full stack anime streaming / downloading site. It had around 10000 active users until it was discontinued due to legal issues. It was a great learning experience for me to learn to make an app without downtime.",
     techstacks: [
       "NextJS",
       "TypeScript",
