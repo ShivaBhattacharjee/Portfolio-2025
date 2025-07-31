@@ -101,7 +101,7 @@ export const projects = [
   {
     title : "Image Sonification",
     category: "Research Project",
-    description: "This app converts images to audio and back , using NASA-inspired sonification. It embeds all image data directly in the sound, letting you recreate the picture from just the audio file. Essentially, it's \"audio DNA\" for images!.",
+    description: "This app converts images to audio and back , using NASA-inspired sonification. It embeds all image data directly in the sound (Donot hear the audio with IEMS on may make you go deaf), letting you recreate the picture from just the audio file. Essentially, it's \"audio DNA\" for images!.",
     techstacks: ["Python", ],
     status: "active",
     link: "https://github.com/ShivaBhattacharjee/image-sonification"
@@ -109,7 +109,7 @@ export const projects = [
   {
     title : "Object Detection",
     category: "Research Project",
-    description: "A dynamic object detection system for identifying objects in images, built for large datasets and high accuracy.",
+    description: "A yet another dynamic object detection system for identifying objects in images, built for large datasets and high accuracy doesnt work well with electronics tho.",
     techstacks: ["Python", "YOLOv8", "Ultralytics"],
     status: "active",
     link: "https://github.com/ShivaBhattacharjee/object-detection"
