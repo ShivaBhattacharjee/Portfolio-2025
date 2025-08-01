@@ -1,13 +1,15 @@
 "use client";
 import React from "react";
 import _ from "lodash";
-import { FaClipboard, FaGithub, FaTwitter } from "react-icons/fa6";
+import { FaClipboard, FaDiscord, FaGithub, FaTwitter } from "react-icons/fa6";
 import { IoIosMail } from "react-icons/io";
 import { Button } from "@/components/ui/button";
 import ContactDialog from "@/components/layout/contact-dialog";
 import { Goldman, Zen_Dots } from "next/font/google";
 import { toast } from "../ui/use-toast";
 import GitHubStreak from "../Streaks";
+import { Rss } from "lucide-react";
+import Link from "next/link";
 const zenDots = Zen_Dots({ subsets: ["latin"], weight: "400" });
 const Hero = () => {
   return (
@@ -22,7 +24,9 @@ const Hero = () => {
               Full Stack + AI Engineer & Part-time Researcher
             </h2>
             <p className={`${zenDots.className}`}>
-              I build functional and beautiful applications with intuitive UI/UX. I also research SLMs and computer vision, with 5+ research projects.
+              I build functional and beautiful applications with intuitive
+              UI/UX. I also research SLMs and computer vision, with 5+ research
+              projects.
             </p>
           </div>
           <div
@@ -54,6 +58,20 @@ const Hero = () => {
             <a href="mailto:hello@theshiva.xyz" target="_blank">
               <IoIosMail size="24px" className="opacity-60 hover:opacity-100" />
             </a>
+            <a
+              href="https://discord.com/users/503152077824851968"
+              target="_blank"
+            >
+              <FaDiscord size="24px" className="opacity-60 hover:opacity-100"/>
+              </a>
+            <Link
+              href="/rss.xml"
+              target="_blank"
+              className="flex items-center justify-center space-x-2 transition-colors hover:text-accent-foreground"
+              title="RSS Feed"
+            >
+              <Rss size="24px" className="opacity-60 hover:opacity-100" />
+            </Link>
           </div>
         </div>
       </div>
@@ -65,14 +83,20 @@ const Hero = () => {
             About Me
           </h5>
           <p className="mb-4">
-            I&apos;m a 20-year-old Full Stack + AI Engineer and Part-time Researcher passionate about building innovative solutions. My expertise lies in developing and deploying full-stack applications with a focus on intuitive UI/UX, as well as conducting research in SLMs and Computer Vision. I have contributed to 5+ research projects, exploring applications of computer vision and SLMs, and developing fine-tuning pipelines for SLMs and LLMs. I am driven to create impactful technology that solves real-world problems.
+            I&apos;m a 20-year-old Full Stack + AI Engineer and Part-time
+            Researcher passionate about building innovative solutions. My
+            expertise lies in developing and deploying full-stack applications
+            with a focus on intuitive UI/UX, as well as conducting research in
+            SLMs and Computer Vision. I have contributed to 5+ research
+            projects, exploring applications of computer vision and SLMs, and
+            developing fine-tuning pipelines for SLMs and LLMs. I am driven to
+            create impactful technology that solves real-world problems.
           </p>
         </div>
       </div>
-      <GitHubStreak/>
+      <GitHubStreak />
     </div>
   );
 };
 
 export default Hero;
-

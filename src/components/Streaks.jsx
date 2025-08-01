@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   BarChart,
   Bar,
@@ -105,6 +105,7 @@ const Streaks = ({
 }) => {
   const [username, setUsername] = useState(initialUsername);
   const [inputUsername, setInputUsername] = useState("");
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [streakData, setStreakData] = useState({
     currentStreak: 0,
     longestStreak: 0,
@@ -369,6 +370,8 @@ const Streaks = ({
     if (inputUsername.trim()) {
       setUsername(inputUsername.trim());
       setFetchAttempts(0); 
+      fetchGitHubData(inputUsername.trim());
+      setIsDialogOpen(false); // Close dialog
     }
   };
 
@@ -390,12 +393,13 @@ const Streaks = ({
             <span className=" text-black dark:text-white px-2 py-1">LAST 7 DAYS</span>
           </h2>
 
-          <Dialog>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button
                 variant="outline"
                 size="sm"
                 className="h-8 border-2 border-black dark:border-white w-full md:w-52 text-black dark:text-white"
+                onClick={() => setIsDialogOpen(true)}
               >
                 <Search size={14} className="mr-1" />
                 <span className="truncate">@{username}</span>
@@ -421,14 +425,12 @@ const Streaks = ({
                   />
                 </div>
                 <DialogFooter>
-                  <DialogClose asChild>
-                    <Button
-                      type="submit"
-                      className="border-2 border-black dark:border-white text-black dark:text-white"
-                    >
-                      VIEW STATS
-                    </Button>
-                  </DialogClose>
+                  <Button
+                    type="submit"
+                    className="border-2 border-black dark:border-white text-black dark:text-white"
+                  >
+                    VIEW STATS
+                  </Button>
                 </DialogFooter>
               </form>
             </DialogContent>
@@ -549,7 +551,7 @@ const Streaks = ({
                     />
                     <Bar
                       dataKey="commits"
-                      fill="#ff5631"
+                      fill="#808080"
                       radius={[2, 2, 0, 0]}
                     />
                   </BarChart>
