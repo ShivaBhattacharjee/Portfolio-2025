@@ -5,6 +5,7 @@ import NavigationBar from "@/components/sections/navigation";
 import Footer from "@/components/sections/footer";
 import FloatingSkull from "@/components/Floating";
 import OnekoCat from "@/components/OnekoCat";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata = {
   title: {
@@ -21,18 +22,25 @@ const goldmanFont = Goldman({ subsets: ["latin"], weight: "400" });
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto] overflow-x-hidden">
-          <NavigationBar />
-          <main className={goldmanFont.className}>
-            <OnekoCat/>
-            {children}
-            <FloatingSkull />
-          </main>
-          <Footer />
-          <Toaster />
-        </div>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto] overflow-x-hidden">
+            <NavigationBar />
+            <main className={goldmanFont.className}>
+              <OnekoCat/>
+              {children}
+              <FloatingSkull />
+            </main>
+            <Footer />
+            <Toaster />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

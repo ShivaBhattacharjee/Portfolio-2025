@@ -1,41 +1,36 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+"use client"
+
+import React from "react";
+import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
 import MoonIcon from "./icons/moon";
 import SunIcon from "./icons/sun";
 
 const Toggle = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  const switchTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
   const toggleMode = () => {
-    setDarkMode((prev) => !prev);
-    document.documentElement.classList.toggle("dark");
+    //@ts-ignore
+    if (!document.startViewTransition) switchTheme();
+
+    //@ts-ignore
+    document.startViewTransition(switchTheme);
   };
 
   return (
     <Button
       variant="ghost"
       onClick={toggleMode}
-      className="relative h-12 w-12 overflow-hidden"
+      className="relative h-12 w-12 overflow-hidden rounded-full"
     >
-      <motion.div
-        initial={{ y: 0, opacity: 1 }}
-        animate={darkMode ? { y: -40, opacity: 0 } : { y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="absolute"
-      >
-        <SunIcon className="h-6 w-6 text-primary" />
-      </motion.div>
-
-      <motion.div
-        initial={{ y: 40, opacity: 0 }}
-        animate={darkMode ? { y: 0, opacity: 1 } : { y: 40, opacity: 0 }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="absolute"
-      >
-        <MoonIcon className="h-6 w-6 text-primary" />
-      </motion.div>
+      <SunIcon className="h-6 w-6 text-primary rotate-0 scale-100 transition-all duration-500 ease-in-out dark:-rotate-90 dark:scale-0" />
+      <MoonIcon className="absolute h-6 w-6 text-primary rotate-90 scale-0 transition-all duration-500 ease-in-out dark:rotate-0 dark:scale-100" />
+      <span className="sr-only">Toggle theme</span>
     </Button>
   );
 };
