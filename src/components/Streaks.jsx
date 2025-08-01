@@ -523,7 +523,7 @@ const Streaks = ({
                   <BarChart
                     className="h-full"
                     data={streakData.lastWeekData}
-                    margin={{ top: 20, right: 5, left: 5, bottom: 30 }}
+                    margin={{ top: 25, right: 0, left: -40, bottom: -25 }}
                   >
                     <XAxis
                       dataKey="day"
@@ -531,7 +531,7 @@ const Streaks = ({
                       tick={{ fill: "currentColor", fontSize: 10, fontWeight: "bold" }}
                       angle={-45}
                       textAnchor="end"
-                      height={50}
+                      height={60}
                       className="text-black dark:text-white"
                     />
                     <YAxis
