@@ -1,17 +1,3 @@
-# Portfolio 2025 ✨
-
-A modern, responsive portfolio website built with Next.js 14, featuring dynamic animations, dark/light theme support, and a clean, professional design.
-
-## 🚀 Features
-
-- **Responsive Design**: Optimized for all device sizes
-- **Dark/Light Theme**: Toggle between themes with smooth transitions
-- **Interactive Elements**: Floating animations and smooth scrolling
-- **Contact Form**: Integrated contact form with email functionality
-- **Project Showcase**: Dynamic project cards with status badges
-- **Experience Timeline**: Professional experience showcase
-- **Modern Tech Stack**: Built with latest web technologies
-
 ## 🛠️ Tech Stack
 
 - **Framework**: Next.js 14
@@ -56,9 +42,10 @@ Create a `.env.local` file in the root directory and add your environment variab
 ```env
 # Add your environment variables here
 # Example:
-# NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
-# NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
-# NEXT_PUBLIC_EMAILJS_USER_ID=your_user_id
+# DISCORD_BOT_TOKEN = 
+# DISCORD_RECIPIENT_ID = 
+// optional //
+# NEXT_PUBLIC_GITHUB_TOKEN = 
 ```
 
 ### 4. Run the development server
@@ -169,7 +156,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 If you have any questions or need help customizing this template, feel free to:
 
 - Open an issue on GitHub
-- Contact the original author
+
 
 ## 🎉 Acknowledgments
 
