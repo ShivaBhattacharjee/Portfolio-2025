@@ -26,7 +26,7 @@ export const intros = [
 export const experiences = [
   {
     role: "Software Developer Intern",
-    year: "Feb 2024 - Aug 2024",
+    year: "Feb 2024 - Sept 2024",
     company: "GITCS.",
     responsibility:
       "Develop websites and systems to be used by its clients and maintain current existing websites and systems.",
@@ -34,7 +34,7 @@ export const experiences = [
   },
   {
     role: "Software Engineer (Part-time)",
-    year: "Aug 2024 - Sept 2023",
+    year: "July 2024 - Sept 2024",
     company: "ConcertPal",
     responsibility:
       "Maintained and enhanced an existing Chrome extension product that compares various platforms to find the cheapest provider. During my tenure, I implemented OAuth for secure authentication, utilized a background JavaScript server with Server-Sent Events to improve API latency, and integrated Redis caching for enhanced performance.",
@@ -65,8 +65,8 @@ export const experiences = [
     ],
   },
   {
-    role: "Co Founder and Software Engineer",
-    year: "Jan 2025 - Present",
+    role: "Co-Founder and Software Engineer",
+    year: "Jan 2025 - July",
     company: "Navdyut AI Tech and Research Labs Pvt. Ltd.",
     responsibility:
       "Led AI research, collaborating with universities like VIT to develop and launch a flagship fine-tuned Assamese chatbot on the 22B Mistral model, imbued with Assamese cultural awareness. This innovation garnered media attention, attracted 5,000 users with 800 active users, including paid subscribers, and secured a partnership with the Government of Assam. Navdyut AI's tools are now integral to various B2G tasks, including Assamese translation and computer vision applications, enhancing efficiency across multiple departments.",
