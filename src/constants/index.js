@@ -94,7 +94,7 @@ export const projects = [
     title : "Single Sign On",
     category: "Weekend Boredom",
     description: "A project to implement Single Sign On (SSO) for my applications, created during an entrepreneurship event in my IIM Shillong dorm because the event was so boring I couldn't stay awake. made it so that i can add auth on my projects cause doing the same auth 100 times was boring and time consuming so yeah cooked this (Betterauth and clerk didnt exist back then).",
-    techstacks: ["NextJS", "Tailwind", "MongoDb"],
+    techstacks: ["NextJS", "Tailwind", "PSQL", "Prisma"],
     status: "active",
     link: "https://github.com/ShivaBhattacharjee/sso"
   },
