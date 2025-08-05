@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { projects, experiences } from '@/constants';
 
-// Helper function to escape XML entities
+
 function escapeXml(unsafe) {
   return unsafe.replace(/[<>&'"]/g, function (c) {
     switch (c) {
@@ -17,7 +17,7 @@ function escapeXml(unsafe) {
 export async function GET() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://theshiva.xyz';
   
-  // Generate project items
+  
   const projectItems = projects.map(project => {
     const title = escapeXml(project.title);
     const category = escapeXml(project.category);
