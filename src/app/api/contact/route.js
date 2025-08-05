@@ -1,11 +1,8 @@
-
-
 import { NextResponse } from 'next/server';
-
 
 const DISCORD_API_URL = 'https://discord.com/api/v10';
 const DISCORD_BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
-const DISCORD_RECIPIENT_ID = process.env.DISCORD_RECIPIENT_ID; // 503152077824851968
+const DISCORD_RECIPIENT_ID = process.env.DISCORD_RECIPIENT_ID; 
 
 export async function POST(req) {
   try {
