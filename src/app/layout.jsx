@@ -54,7 +54,7 @@ export const metadata = {
     siteName: "Shiva Bhattacharjee Portfolio",
     images: [
       {
-        url: "/opengraph.png",
+        url: "https://theshiva.xyz/opengraph.png",
         width: 1200,
         height: 630,
         alt: "Shiva Bhattacharjee - Full Stack Developer",
@@ -66,8 +66,8 @@ export const metadata = {
     title: "Shiva Bhattacharjee - Full Stack Developer",
     description:
       "Hello there I am Shiva a full stack developer and I love to build products that make people's life easier.",
-    images: ["/opengraph.png"],
-    creator: "@sh17va", // Replace with your actual Twitter handle
+    images: ["https://theshiva.xyz/opengraph.png"],
+    creator: "@sh17va", 
   },
   alternates: {
     canonical: "https://theshiva.xyz",
