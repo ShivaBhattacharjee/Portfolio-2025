@@ -1,3 +1,6 @@
+<img width="7980" height="4932" alt="image" src="https://github.com/user-attachments/assets/1da6735c-de71-4a52-901d-536435346d17" />
+
+
 ## 🛠️ Tech Stack
 
 - **Framework**: Next.js 14
