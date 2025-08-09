@@ -544,11 +544,16 @@ const Streaks = ({
                     />
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: "var(--background)",
-                        border: "2px solid var(--border)",
+                        backgroundColor: "black", // dark gray background
+                        border: "2px solid rgb(255, 255, 255)",
                         borderRadius: 0,
                         fontWeight: "bold",
-                        color: "var(--foreground)",
+                        color: "rgb(255, 255, 255)",
+                        boxShadow: "4px 4px 0px 0px rgba(0,0,0,0.5)",
+                      }}
+                      labelStyle={{
+                        color: "rgb(255, 255, 255)",
+                        fontWeight: "bold",
                       }}
                     />
                     <Bar
