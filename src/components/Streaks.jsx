@@ -27,8 +27,10 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Press_Start_2P, Zen_Dots } from "next/font/google";
 
-
+const pressStartFont = Press_Start_2P({ subsets: ["latin"], weight: "400" });
+const zenDots = Zen_Dots({ subsets: ["latin"], weight: "400" });
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 const generateSimulatedData = (user) => {
@@ -381,7 +383,7 @@ const Streaks = ({
 
   return (
     <div
-      className={`relative m-auto w-full max-w-3xl overflow-hidden border-4 border-black font-mono shadow-[8px_8px_0px_0px_rgba(128,128,128,0.8)] dark:border-white ${className}`}
+      className={`${pressStartFont.className} relative m-auto w-full max-w-3xl overflow-hidden border-4 border-black font-mono shadow-[8px_8px_0px_0px_rgba(128,128,128,0.8)] dark:border-white ${className}`}
     >
       <div className="absolute bottom-0 right-0 top-0 w-4 bg-black/20"></div>
 
@@ -398,14 +400,14 @@ const Streaks = ({
               <Button
                 variant="outline"
                 size="sm"
-                className="h-8 border-2 border-black dark:border-white w-full md:w-52 text-black dark:text-white"
+                className={`h-8 ${zenDots.className} border-2 border-black dark:border-white w-full md:w-52 text-black dark:text-white`}
                 onClick={() => setIsDialogOpen(true)}
               >
                 <Search size={14} className="mr-1" />
                 <span className="truncate">@{username}</span>
               </Button>
             </DialogTrigger>
-            <DialogContent className="border-4 border-black dark:border-white  text-black dark:text-white">
+            <DialogContent className={`border-4 border-black ${pressStartFont.className} dark:border-white  text-black dark:text-white`}>
               <DialogHeader>
                 <DialogTitle className="text-lg font-bold">
                   CHECK GITHUB STATS

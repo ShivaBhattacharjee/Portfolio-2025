@@ -18,7 +18,7 @@ import { FaArrowRight } from "react-icons/fa6";
 import { Press_Start_2P, Zen_Dots } from "next/font/google";
 const zenDots = Zen_Dots({ subsets: ["latin"], weight: "400" });
 const pressStartFont = Press_Start_2P({ subsets: ["latin"], weight: "400" });
-// Convert your existing validation schema to zod
+
 const formSchema = z.object({
   fullname: z.string().min(1, "Full name is required"),
   email: z.string().email("Invalid email address"),
@@ -27,7 +27,6 @@ const formSchema = z.object({
 });
 
 const ContactForm = ({ handleOnSubmit, isSubmitting }) => {
-  // Define form
 const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -38,7 +37,7 @@ const form = useForm({
     },
   });
 
-  // Form submission handler
+
   const onSubmit = (values) => {
     handleOnSubmit(values);
   };
