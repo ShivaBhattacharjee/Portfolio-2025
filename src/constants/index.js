@@ -104,7 +104,7 @@ export const projects = [
     description: "This app converts images to audio and back , using NASA-inspired sonification. It embeds all image data directly in the sound (Donot hear the audio with IEMS on may make you go deaf), letting you recreate the picture from just the audio file. Essentially, it's \"audio DNA\" for images!.",
     techstacks: ["Python", ],
     status: "active",
-    link: "https://github.com/ShivaBhattacharjee/image-sonification"
+    link: "https://github.com/ShivaBhattacharjee/imagesonification"
   },
   {
     title : "Object Detection",
