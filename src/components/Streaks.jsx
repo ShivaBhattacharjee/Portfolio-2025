@@ -33,23 +33,6 @@ const pressStartFont = Press_Start_2P({ subsets: ["latin"], weight: "400" });
 const zenDots = Zen_Dots({ subsets: ["latin"], weight: "400" });
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-const generateSimulatedData = (user) => {
-  const simulatedCommits = days.map((day, index) => ({
-    day,
-    commits: Math.floor(Math.random() * 5) + 1
-  }));
-  
-  return {
-    currentStreak: Math.floor(Math.random() * 7) + 1,
-    longestStreak: Math.floor(Math.random() * 20) + 5,
-    totalContributions: Math.floor(Math.random() * 1000) + 100,
-    lastWeekData: simulatedCommits,
-    loading: false,
-    timestamp: new Date().getTime(),
-    error: null,
-    isSimulated: true
-  };
-};
 
 const cache = {
   data: {},
@@ -130,9 +113,7 @@ const Streaks = ({
       'Accept': 'application/vnd.github.v3+json'
     };
 
-    headers['Authorization'] = `token ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`;
-
-    console.log("Using GitHub token for requests", process.env.NEXT_PUBLIC_GITHUB_TOKEN);
+    headers['Authorization'] = `token ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`
     return headers;
   };
 
@@ -177,7 +158,6 @@ const Streaks = ({
     const cachedData = cache.get(cacheKey);
     
     if (cachedData) {
-      console.log("Using cached data for", user);
       setStreakData({
         ...cachedData,
         loading: false,
@@ -197,20 +177,6 @@ const Streaks = ({
 
       processRateLimitInfo(userResponse);
       
-
-      if (userResponse.status === 403 && userResponse.headers.get('x-ratelimit-remaining') === '0') {
-        console.log("Rate limited. Using simulated data.");
-        const simulatedData = generateSimulatedData(user);
-        
-
-        cache.set(cacheKey, simulatedData);
-        
-        setStreakData({
-          ...simulatedData,
-          lastUpdated: new Date()
-        });
-        return;
-      }
       
       if (!userResponse.ok) {
         if (userResponse.status === 404) {
@@ -223,26 +189,13 @@ const Streaks = ({
 
 
       const reposResponse = await fetch(
-        `https://api.github.com/users/${user}/repos?per_page=100`,
+        `https://api.github.com/users/${user}`,
         { headers: getHeaders() }
       );
       
       processRateLimitInfo(reposResponse);
       
-    
-      if (!reposResponse.ok) {
-        if (reposResponse.status === 403) {
-          console.log("Rate limited on repos request. Using simulated data.");
-          const simulatedData = generateSimulatedData(user);
-          cache.set(cacheKey, simulatedData);
-          setStreakData({
-            ...simulatedData,
-            lastUpdated: new Date()
-          });
-          return;
-        }
-        throw new Error(`Error fetching repositories: ${reposResponse.status}`);
-      }
+  
       
       const reposData = await reposResponse.json();
       const totalStars = reposData.reduce(
@@ -252,27 +205,12 @@ const Streaks = ({
 
 
       const eventsResponse = await fetch(
-        `https://api.github.com/users/${user}/events?per_page=100`,
+        `https://api.github.com/users/${user}/events/public`,
         { headers: getHeaders() }
       );
       
       processRateLimitInfo(eventsResponse);
-      
 
-      if (!eventsResponse.ok) {
-        if (eventsResponse.status === 403) {
-          console.log("Rate limited on events request. Using simulated data.");
-          const simulatedData = generateSimulatedData(user);
-          cache.set(cacheKey, simulatedData);
-          setStreakData({
-            ...simulatedData,
-            lastUpdated: new Date()
-          });
-          return;
-        }
-        throw new Error(`Error fetching events: ${eventsResponse.status}`);
-      }
-      
       const eventsData = await eventsResponse.json();
 
       const today = new Date();
@@ -334,18 +272,6 @@ const Streaks = ({
       console.error("Error fetching GitHub data:", error);
       
 
-      if (fetchAttempts > 1) {
-        console.log("Multiple fetch attempts failed. Using simulated data.");
-        const simulatedData = generateSimulatedData(user);
-        
-    
-        cache.set(cacheKey, simulatedData);
-        
-        setStreakData({
-          ...simulatedData,
-          lastUpdated: new Date()
-        });
-      } else {
         setFetchAttempts(prev => prev + 1);
         const isRateLimitError = error.message.includes("rate limit");
         
@@ -359,7 +285,6 @@ const Streaks = ({
           error: error.message,
           isRateLimitError
         });
-      }
     }
   };
 
@@ -373,7 +298,7 @@ const Streaks = ({
       setUsername(inputUsername.trim());
       setFetchAttempts(0); 
       fetchGitHubData(inputUsername.trim());
-      setIsDialogOpen(false); // Close dialog
+      setIsDialogOpen(false); 
     }
   };
 
