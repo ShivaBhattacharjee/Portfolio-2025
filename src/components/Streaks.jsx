@@ -189,13 +189,15 @@ const Streaks = ({
 
 
       const reposResponse = await fetch(
-        `https://api.github.com/users/${user}`,
+        `https://api.github.com/users/${user}/repos`,
         { headers: getHeaders() }
       );
       
       processRateLimitInfo(reposResponse);
       
-  
+      if (!reposResponse.ok) {
+        throw new Error(`GitHub API error: ${reposResponse.status}`);
+      }
       
       const reposData = await reposResponse.json();
       const totalStars = reposData.reduce(
