@@ -94,6 +94,7 @@ const Streaks = ({
   const [streakData, setStreakData] = useState({
     currentStreak: 0,
     longestStreak: 0,
+    longestStreakThisYear: 0,
     totalContributions: 0,
     lastWeekData: days.map((day) => ({ day, commits: 0 })),
     loading: true,
@@ -188,26 +189,147 @@ const Streaks = ({
       const userData = await userResponse.json();
 
 
-      const reposResponse = await fetch(
-        `https://api.github.com/users/${user}/repos`,
-        { headers: getHeaders() }
-      );
-      
-      processRateLimitInfo(reposResponse);
-      
-      if (!reposResponse.ok) {
-        throw new Error(`GitHub API error: ${reposResponse.status}`);
-      }
-      
-      const reposData = await reposResponse.json();
-      const totalStars = reposData.reduce(
+      // Fetch all repositories with pagination
+      const getAllRepos = async (username) => {
+        let allRepos = [];
+        let page = 1;
+        const perPage = 100; // Maximum allowed per page
+        
+        while (true) {
+          const reposResponse = await fetch(
+            `https://api.github.com/users/${username}/repos?page=${page}&per_page=${perPage}&sort=updated`,
+            { headers: getHeaders() }
+          );
+          
+          processRateLimitInfo(reposResponse);
+          
+          if (!reposResponse.ok) {
+            throw new Error(`GitHub API error: ${reposResponse.status}`);
+          }
+          
+          const reposData = await reposResponse.json();
+          
+          if (reposData.length === 0) {
+            break; // No more repositories
+          }
+          
+          allRepos = allRepos.concat(reposData);
+          
+          // If we got less than perPage, we've reached the end
+          if (reposData.length < perPage) {
+            break;
+          }
+          
+          page++;
+        }
+        
+        return allRepos;
+      };
+
+      const allRepos = await getAllRepos(user);
+      const totalStars = allRepos.reduce(
         (acc, repo) => acc + repo.stargazers_count,
         0
       );
 
 
+      // Calculate proper streaks from events data
+      const calculateStreaks = (events) => {
+        const currentYear = new Date().getFullYear();
+        const commitDates = new Set();
+        
+        console.log(`Total events received: ${events.length}`);
+        
+        // Extract all commit dates
+        events.forEach((event) => {
+          if (event.type === "PushEvent") {
+            const eventDate = new Date(event.created_at);
+            const dateString = eventDate.toISOString().split('T')[0]; // YYYY-MM-DD format
+            commitDates.add(dateString);
+          }
+        });
+        
+        console.log(`Unique commit dates: ${commitDates.size}`);
+        console.log(`Commit dates:`, Array.from(commitDates).sort());
+        
+        // Convert to sorted array of dates
+        const sortedDates = Array.from(commitDates).sort();
+        
+        if (sortedDates.length === 0) {
+          console.log('No commit dates found, returning zeros');
+          return { currentStreak: 0, longestStreak: 0, longestStreakThisYear: 0 };
+        }
+        
+        // Calculate current streak (from today backwards)
+        let currentStreak = 0;
+        const today = new Date();
+        let checkDate = new Date(today);
+        
+        while (true) {
+          const checkDateString = checkDate.toISOString().split('T')[0];
+          if (commitDates.has(checkDateString)) {
+            currentStreak++;
+            checkDate.setDate(checkDate.getDate() - 1);
+          } else {
+            break;
+          }
+        }
+        
+        console.log(`Current streak: ${currentStreak}`);
+        
+        // Calculate longest streak overall
+        let longestStreak = 0;
+        let currentStreakCount = 1;
+        
+        for (let i = 1; i < sortedDates.length; i++) {
+          const prevDate = new Date(sortedDates[i - 1]);
+          const currDate = new Date(sortedDates[i]);
+          const dayDiff = (currDate - prevDate) / (1000 * 60 * 60 * 24);
+          
+          if (dayDiff === 1) {
+            currentStreakCount++;
+          } else {
+            longestStreak = Math.max(longestStreak, currentStreakCount);
+            currentStreakCount = 1;
+          }
+        }
+        longestStreak = Math.max(longestStreak, currentStreakCount);
+        
+        console.log(`Longest streak overall: ${longestStreak}`);
+        
+        // Calculate longest streak this year
+        const thisYearDates = sortedDates.filter(date => {
+          return new Date(date).getFullYear() === currentYear;
+        });
+        
+        console.log(`This year dates (${currentYear}):`, thisYearDates);
+        
+        let longestStreakThisYear = 0;
+        let currentStreakThisYear = 1;
+        
+        if (thisYearDates.length > 0) {
+          for (let i = 1; i < thisYearDates.length; i++) {
+            const prevDate = new Date(thisYearDates[i - 1]);
+            const currDate = new Date(thisYearDates[i]);
+            const dayDiff = (currDate - prevDate) / (1000 * 60 * 60 * 24);
+            
+            if (dayDiff === 1) {
+              currentStreakThisYear++;
+            } else {
+              longestStreakThisYear = Math.max(longestStreakThisYear, currentStreakThisYear);
+              currentStreakThisYear = 1;
+            }
+          }
+          longestStreakThisYear = Math.max(longestStreakThisYear, currentStreakThisYear);
+        }
+        
+        console.log(`Longest streak this year: ${longestStreakThisYear}`);
+        
+        return { currentStreak, longestStreak, longestStreakThisYear };
+      };
+
       const eventsResponse = await fetch(
-        `https://api.github.com/users/${user}/events/public`,
+        `https://api.github.com/users/${user}/events/public?per_page=100`,
         { headers: getHeaders() }
       );
       
@@ -246,15 +368,13 @@ const Streaks = ({
         commits: dailyCommits[day] || 0,
       }));
 
-   
-      const currentStreak = Math.min(
-        7,
-        Object.values(dailyCommits).filter((count) => count > 0).length
-      );
+      // Calculate proper streaks
+      const streaks = calculateStreaks(eventsData);
       
       const result = {
-        currentStreak: currentStreak,
-        longestStreak: userData.public_repos > 20 ? 14 : 7, 
+        currentStreak: streaks.currentStreak,
+        longestStreak: streaks.longestStreak,
+        longestStreakThisYear: streaks.longestStreakThisYear,
         totalContributions: totalStars,
         lastWeekData: lastWeekData,
         loading: false,
@@ -280,6 +400,7 @@ const Streaks = ({
         setStreakData({
           currentStreak: 0,
           longestStreak: 0,
+          longestStreakThisYear: 0,
           totalContributions: 0,
           lastWeekData: days.map((day) => ({ day, commits: 0 })),
           loading: false,
