@@ -91,7 +91,7 @@ export const experiences = [
     year: "July 2025 - present",
     company: "Astra Engineering LLC",
     responsibility:
-      "Working wit bez.ai",
+      "Working with bez.ai",
     techstacks: [
       "NextJS",
       "Tailwindcss",
