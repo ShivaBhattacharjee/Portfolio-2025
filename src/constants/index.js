@@ -91,12 +91,13 @@ export const experiences = [
     year: "July 2025 - present",
     company: "Astra Engineering LLC",
     responsibility:
-      "Working with bez.ai",
+      "Probably making prs at usebez.ai",
     techstacks: [
       "NextJS",
       "Tailwindcss",
       "Firebase",
       "OpenAI",
+      "Fal"
     ],
   },
 ];
