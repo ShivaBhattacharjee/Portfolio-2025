@@ -91,13 +91,14 @@ export const experiences = [
     year: "July 2025 - present",
     company: "Astra Engineering LLC",
     responsibility:
-      "Probably making prs at usebez.ai",
+      Working with usebez.ai an ai copilot for jewelrs under Astra Engineering Co funded by Leap year and Macroscopic Ventures",
     techstacks: [
       "NextJS",
       "Tailwindcss",
       "Firebase",
       "OpenAI",
-      "Fal"
+      "Fal",
+      "Prompt Layer"
     ],
   },
 ];
