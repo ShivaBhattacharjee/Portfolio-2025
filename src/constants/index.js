@@ -90,8 +90,7 @@ export const experiences = [
     role: "Individual Contractor",
     year: "July 2025 - present",
     company: "Astra Engineering LLC",
-    responsibility:
-      Working with usebez.ai an ai copilot for jewelrs under Astra Engineering Co funded by Leap year and Macroscopic Ventures",
+    responsibility: "Working with usebez.ai an ai copilot for jewelrs under Astra Engineering Co funded by Leap year and Macroscopic Ventures",
     techstacks: [
       "NextJS",
       "Tailwindcss",
