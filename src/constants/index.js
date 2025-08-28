@@ -87,7 +87,7 @@ export const experiences = [
     ],
   },
     {
-    role: "Individual Contractor",
+    role: "Applied AI & Full Stack Engineer ",
     year: "July 2025 - present",
     company: "Astra Engineering LLC",
     responsibility: "Working with usebez.ai an ai copilot for jewelers under Astra Engineering Co funded by Leap year and Macroscopic Ventures",
