@@ -19,11 +19,11 @@ const Hero = () => {
           <div
             className={`mb-6 flex flex-col gap-y-2 text-center md:text-start ${zenDots.className}`}
           >
-            <h1 className={`text-4xl font-bold`}>Shiva Bhattacharjee</h1>
-            <h2 className={`text-lg font-medium`}>
+            <h1 className={`text-3xl md:text-4xl font-bold`}>Shiva Bhattacharjee</h1>
+            <h2 className={`text-sm md:text-xl font-medium`}>
               Full Stack + AI Engineer & Part-time Researcher
             </h2>
-            <p className={`${zenDots.className}`}>
+            <p className={`${zenDots.className} text-sm md:text-base`}>
               I build functional and beautiful applications with intuitive
               UI/UX. I also research SLMs and computer vision, with 5+ research
               projects.
@@ -78,11 +78,11 @@ const Hero = () => {
       <div className="space-y-6">
         <div>
           <h5
-            className={`mb-4 font-cera text-2xl font-medium ${zenDots.className}`}
+            className={`mb-4 font-cera text-3xl md:text-2xl font-medium ${zenDots.className}`}
           >
             About Me
           </h5>
-          <p className="mb-4">
+          <p className="mb-4 text-sm md:text-lg">
             I&apos;m a 20-year-old Full Stack + AI Engineer and Part-time
             Researcher passionate about building innovative solutions. My
             expertise lies in developing and deploying full-stack applications

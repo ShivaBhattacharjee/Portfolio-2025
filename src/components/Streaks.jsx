@@ -438,9 +438,9 @@ const Streaks = ({
       {/* Header */}
       <div className="relative z-0 border-b-4 border-black dark:border-white  p-4 text-black dark:text-white">
         <div className="flex flex-wrap gap-2 items-center justify-between">
-          <h2 className="flex items-center text-xl font-black uppercase tracking-tight">
+          <h2 className="flex items-center font-black uppercase tracking-tight text-sm md:text-base">
             <Calendar size={24} className="mr-2" />
-            <span className=" text-black dark:text-white px-2 py-1">LAST 7 DAYS</span>
+            <span className=" text-black dark:text-white px-2 py-1 text-sm md:text-base">LAST 7 DAYS</span>
           </h2>
 
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -448,19 +448,19 @@ const Streaks = ({
               <Button
                 variant="outline"
                 size="sm"
-                className={`h-8 ${zenDots.className} border-2 border-black dark:border-white w-full md:w-52 text-black dark:text-white`}
+                className={`h-8 ${zenDots.className} border-2 border-black dark:border-white w-full md:w-56 text-black dark:text-white`}
                 onClick={() => setIsDialogOpen(true)}
               >
                 <Search size={14} className="mr-1" />
-                <span className="truncate">@{username}</span>
+                <span className="truncate text-sm">@{username}</span>
               </Button>
             </DialogTrigger>
             <DialogContent className={`border-4 border-black ${pressStartFont.className} dark:border-white  text-black dark:text-white`}>
               <DialogHeader>
-                <DialogTitle className="text-lg font-bold">
+                <DialogTitle className="md:text-lg text-sm font-bold">
                   CHECK GITHUB STATS
                 </DialogTitle>
-                <DialogDescription className="text-gray-600 dark:text-gray-300">
+                <DialogDescription className="text-gray-600 dark:text-gray-300 text-sm">
                   Enter a GitHub username to view their streak stats.
                 </DialogDescription>
               </DialogHeader>
@@ -471,7 +471,7 @@ const Streaks = ({
                     placeholder="GitHub username"
                     value={inputUsername}
                     onChange={(e) => setInputUsername(e.target.value)}
-                    className="border-2 border-black dark:border-white  text-black dark:text-white"
+                    className="border-2 border-black dark:border-white  text-black dark:text-white text-sm md:text-base"
                   />
                 </div>
                 <DialogFooter>
@@ -521,46 +521,46 @@ const Streaks = ({
             {/* Stats row */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
               <div className="flex flex-col flex-wrap items-center border-2 border-black dark:border-white  0 p-4">
-                <div className="m-auto mb-1 flex text-sm font-bold uppercase tracking-wide text-black dark:text-white">
+                <div className="m-auto mb-1 flex text-xs md:text-sm  items-center justify-center font-bold uppercase tracking-wide text-black dark:text-white">
                   <Flame size={18} className="mr-2 text-black dark:text-white" />
                   CURRENT
                 </div>
                 <div className="flex items-center">
-                  <span className="text-4xl font-black text-black dark:text-white">
+                  <span className="md:text-4xl text-2xl font-black text-black dark:text-white">
                     {streakData.currentStreak}
                   </span>
                 </div>
-                <div className="mt-1 px-2 text-xs text-gray-600 dark:text-gray-300">
+                <div className="mt-1 px-2 text-xs md:text-sm text-gray-600 dark:text-gray-300">
                   days
                 </div>
               </div>
 
-              <div className="flex flex-col items-center border-2 border-black dark:border-white p-4">
-                <div className="mb-1 flex text-sm font-bold uppercase tracking-wide dark:text-white text-black">
+              <div className="flex flex-col flex-wrap items-center border-2 border-black dark:border-white p-4">
+                <div className="mb-1 m-auto text-xs md:text-sm flex font-bold uppercase tracking-wide dark:text-white text-black">
                   <Trophy size={18} className="mr-2 dark:text-white text-black" />
                   LONGEST
                 </div>
                 <div className="flex items-center">
-                  <span className="text-4xl font-black dark:text-white text-black">
+                  <span className="md:text-4xl text-2xl font-black dark:text-white text-black">
                     {streakData.longestStreak}
                   </span>
                 </div>
-                <div className="mt-1 px-2 text-xs text-white">
+                <div className="mt-1 px-2 text-xs md:text-sm text-white">
                   days
                 </div>
               </div>
 
               <div className="flex flex-col items-center border-2 border-black dark:border-white  p-4">
-                <div className="mb-1 flex text-sm font-bold uppercase tracking-wide dark:text-white text-black">
+                <div className="mb-1 m-auto text-xs md:text-sm flex font-bold uppercase tracking-wide dark:text-white text-black">
                   <GitCommit size={18} className="mr-2 dark:text-white text-black" />
                   TOTAL
                 </div>
                 <div className="flex items-center">
-                  <span className="text-4xl font-black dark:text-white text-black">
+                  <span className="md:text-4xl text-2xl font-black dark:text-white text-black">
                     {streakData.totalContributions}
                   </span>
                 </div>
-                <div className="mt-1 px-2 text-xs dark:text-white text-black">
+                <div className="mt-1 px-2 text-xs md:text-sm dark:text-white text-black">
                   stars
                 </div>
               </div>
@@ -578,15 +578,17 @@ const Streaks = ({
                     <XAxis
                       dataKey="day"
                       axisLine={{ stroke: "currentColor", strokeWidth: 1 }}
-                      tick={{ fill: "currentColor", fontSize: 10, fontWeight: "bold" }}
+                      tick={{ fill: "currentColor", fontSize: 10, fontWeight: "bold" , textSize: "xs md:text-sm" }}
                       angle={-45}
+                      fontSize={10}
                       textAnchor="end"
                       height={60}
                       className="text-black dark:text-white"
                     />
                     <YAxis
                       axisLine={{ stroke: "currentColor", strokeWidth: 1 }}
-                      tick={{ fill: "currentColor", fontSize: 12, fontWeight: "bold" }}
+                      tick={{ fill: "currentColor", fontSize: 12, fontWeight: "bold" , textSize: "xs md:text-sm" }}
+                      fontSize={12}
                       domain={[0, "dataMax + 1"]}
                       className="text-black dark:text-white"
                     />
