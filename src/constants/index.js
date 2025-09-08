@@ -65,8 +65,8 @@ export const experiences = [
     ],
   },
   {
-    role: "Co-Founder and Software Engineer",
-    year: "Jan 2025 - July",
+    role: "Member of technical stuff",
+    year: "Jan 2025 - July 2025",
     company: "Navdyut AI Tech and Research Labs Pvt. Ltd.",
     responsibility:
       "Led AI research, collaborating with universities like VIT to develop and launch a flagship fine-tuned Assamese chatbot on the 22B Mistral model, imbued with Assamese cultural awareness. This innovation garnered media attention, attracted 5,000 users with 800 active users, including paid subscribers, and secured a partnership with the Government of Assam. Navdyut AI's tools are now integral to various B2G tasks, including Assamese translation and computer vision applications, enhancing efficiency across multiple departments.",
@@ -78,12 +78,26 @@ export const experiences = [
       "Supabase",
       "Digital Ocean",
       "Rag",
-      "OpeanAI",
+      "OpenAI",
       "Vector DB",
       "TTS,",
       "Langchain",
       "LlamaIndex",
       "Pinecone",
+    ],
+  },
+    {
+    role: "Applied AI & Full Stack Engineer ",
+    year: "July 2025 - present",
+    company: "Astra Engineering LLC",
+    responsibility: "Working with usebez.ai an ai copilot for jewelers under Astra Engineering Co ,  funded by Leap year and Macroscopic Ventures",
+    techstacks: [
+      "NextJS",
+      "Tailwindcss",
+      "Firebase",
+      "OpenAI",
+      "Fal",
+      "Prompt Layer"
     ],
   },
 ];
