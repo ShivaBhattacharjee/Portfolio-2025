@@ -15,7 +15,7 @@ function escapeXml(unsafe) {
 }
 
 export async function GET() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://theshiva.xyz';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://shiva.codes';
   
   
   const projectItems = projects.map(project => {

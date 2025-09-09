@@ -47,14 +47,14 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://theshiva.xyz",
+    url: "https://shiva.codes",
     title: "Shiva Bhattacharjee - Full Stack Developer",
     description:
       "Hello there I am Shiva a full stack developer and I love to build products that make people's life easier.",
     siteName: "Shiva Bhattacharjee Portfolio",
     images: [
       {
-        url: "https://theshiva.xyz/opengraph.png",
+        url: "https://shiva.codes/opengraph.png",
         width: 1200,
         height: 630,
         alt: "Shiva Bhattacharjee - Full Stack Developer",
@@ -66,13 +66,13 @@ export const metadata = {
     title: "Shiva Bhattacharjee - Full Stack Developer",
     description:
       "Hello there I am Shiva a full stack developer and I love to build products that make people's life easier.",
-    images: ["https://theshiva.xyz/opengraph.png"],
+    images: ["https://shiva.codes/opengraph.png"],
     creator: "@sh17va", 
   },
   alternates: {
-    canonical: "https://theshiva.xyz",
+    canonical: "https://shiva.codes",
     types: {
-      "application/rss+xml": [{ url: "https://theshiva.xyz/rss.xml", title: "RSS Feed" }],
+      "application/rss+xml": [{ url: "https://shiva.codes/rss.xml", title: "RSS Feed" }],
     },
   },
 };
@@ -85,8 +85,8 @@ export default function RootLayout({ children }) {
     name: "Shiva Bhattacharjee",
     jobTitle: "Full Stack Developer",
     description: "Full stack developer who loves to build products that make people's life easier",
-    url: "https://theshiva.xyz",
-    image: "https://theshiva.xyz/opengraph.png",
+    url: "https://shiva.codes",
+    image: "https://shiva.codes/opengraph.png",
   };
 
   return (
