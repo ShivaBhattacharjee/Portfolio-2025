@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { FaArrowRight, FaCalendar, FaBook } from "react-icons/fa6";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const TruncatedTitle = ({ title, maxLength = 60 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -85,8 +85,102 @@ const ExpandableAbstract = ({ description }) => {
 };
 
 const ResearchList = ({ research }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return (
+      <div className="space-y-6">
+        {research.map((item, index) => (
+          <div
+            key={index}
+            className="border-b border-border pb-6 last:border-b-0"
+          >
+            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+              <div className="flex-1 space-y-3">
+                <div className="space-y-2">
+                  <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-2">
+                    <h2 className="text-xl font-bold">{item.title}</h2>
+                    <Badge 
+                      variant={item.status === 'under-review' ? 'under-review' : item.status} 
+                      className="w-fit"
+                    >
+                      {item.status === 'under-review' ? 'Under Review' : 
+                       item.status === 'active' ? 'Active' : 'Discontinued'}
+                    </Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground font-medium">
+                    {item.category}
+                  </p>
+                </div>
+                
+                <div className="space-y-2">
+                  <h3 className="text-sm font-semibold text-foreground">Abstract</h3>
+                  <p className="text-base leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+                
+                <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-1">
+                    <FaBook size={12} />
+                    <span>{item.journal}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <FaCalendar size={12} />
+                    <span>{item.year}</span>
+                  </div>
+                  {item.collaboration && (
+                    <div className="flex items-center gap-1">
+                      <span>•</span>
+                      <span>{item.collaboration}</span>
+                    </div>
+                  )}
+                </div>
+                
+                <div className="flex flex-wrap gap-2">
+                  {item.techstacks.map((tech, techIndex) => (
+                    <Badge
+                      key={techIndex}
+                      variant="secondary"
+                      className="text-xs"
+                    >
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="flex-shrink-0">
+                {item.status === 'under-review' ? (
+                  <Button 
+                    size="sm" 
+                    disabled 
+                    className="cursor-not-allowed opacity-50"
+                  >
+                    Under Review <FaArrowRight className="ml-2" size="12px" />
+                  </Button>
+                ) : (
+                  <a href={item.link} target="_blank" rel="noopener noreferrer">
+                    <Button size="sm">
+                      View Research <FaArrowRight className="ml-2" size="12px" />
+                    </Button>
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return (
-    <TooltipProvider>
+    <div suppressHydrationWarning>
+      <TooltipProvider>
       <div className="space-y-6">
         {research.map((item, index) => (
           <div
@@ -190,6 +284,7 @@ const ResearchList = ({ research }) => {
         ))}
       </div>
     </TooltipProvider>
+    </div>
   );
 };
 

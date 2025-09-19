@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { projects, experiences } from '@/constants';
+import { projects, experiences, research } from '@/constants';
 
 
 function escapeXml(unsafe) {
@@ -71,11 +71,46 @@ export async function GET() {
     </item>`;
   }).join('');
 
+  // Generate research items
+  const researchItems = research.map(paper => {
+    const title = escapeXml(paper.title);
+    const category = escapeXml(paper.category);
+    const description = paper.description; // Keep original for CDATA
+    const techStack = paper.techstacks.join(', ');
+    const status = paper.status;
+    const journal = escapeXml(paper.journal);
+    const year = paper.year;
+    const collaboration = paper.collaboration ? escapeXml(paper.collaboration) : '';
+    const paperSlug = paper.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+
+    return `
+    <item>
+      <title>${title}</title>
+      <description><![CDATA[
+        <p><strong>Category:</strong> ${category}</p>
+        <br/>
+        <p><strong>Abstract:</strong></p>
+        <p>${description}</p>
+        <br/>
+        <p><strong>Journal:</strong> ${journal}</p>
+        <p><strong>Year:</strong> ${year}</p>
+        ${collaboration ? `<p><strong>Collaboration:</strong> ${collaboration}</p>` : ''}
+        <p><strong>Status:</strong> ${status === 'under-review' ? 'Under Review' : status}</p>
+        <br/>
+        <p><strong>Technologies/Methods:</strong> ${techStack}</p>
+      ]]></description>
+      <link>${siteUrl}/research</link>
+      <guid>${siteUrl}/research#${paperSlug}</guid>
+      <pubDate>${new Date().toUTCString()}</pubDate>
+      <category>Research</category>
+    </item>`;
+  }).join('');
+
   const rssXml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Shiva Bhattacharjee - Full Stack Developer</title>
-    <description>Hello there I am Shiva a full stack developer and I love to build products that make people's life easier. Explore my projects, experience, and journey in software development.</description>
+    <title>Shiva Bhattacharjee - Full Stack Developer & Researcher</title>
+    <description>Hello there I am Shiva a full stack developer and researcher. I love to build products that make people's life easier. Explore my projects, research publications, experience, and journey in software development and AI research.</description>
     <link>${siteUrl}</link>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
@@ -83,6 +118,8 @@ export async function GET() {
     <category>Technology</category>
     <category>Software Development</category>
     <category>Web Development</category>
+    <category>Research</category>
+    <category>Artificial Intelligence</category>
     <generator>Next.js Portfolio RSS Generator</generator>
     
     <item>
@@ -108,6 +145,7 @@ export async function GET() {
     </item>
     ${projectItems}
     ${experienceItems}
+    ${researchItems}
     <item>
       <title>Contact and Connect</title>
       <description><![CDATA[
