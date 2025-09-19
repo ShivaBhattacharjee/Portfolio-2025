@@ -92,7 +92,7 @@ const NavigationBar = () => {
               ease: "easeInOut",
             }}
             style={{ overflow: "hidden" }}
-            className="fixed right-0 z-10 flex h-screen w-[70%] border-primary bg-background"
+            className="fixed right-0 z-10 flex h-screen w-[100%] border-primary bg-background"
           >
             <ul className="mx-auto flex h-full flex-col items-center justify-center gap-10 lg:hidden">
               {navLinks.map((navLink, index) => {
@@ -100,7 +100,7 @@ const NavigationBar = () => {
                   <li key={index} className={`${pressStartFont.className}  uppercase`}>
                     <Link href={navLink.path}>
                       <p
-                        className="font-cera"
+                        className="font-cera text-2xl"
                         onClick={() => {
                           setIsMenuOpen(false);
                         }}
