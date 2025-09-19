@@ -104,13 +104,6 @@ const ResearchList = ({ research }) => {
                 <div className="space-y-2">
                   <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-2">
                     <h2 className="text-xl font-bold">{item.title}</h2>
-                    <Badge 
-                      variant={item.status === 'under-review' ? 'under-review' : item.status} 
-                      className="w-fit"
-                    >
-                      {item.status === 'under-review' ? 'Under Review' : 
-                       item.status === 'active' ? 'Active' : 'Discontinued'}
-                    </Badge>
                   </div>
                   <p className="text-sm text-muted-foreground font-medium">
                     {item.category}
@@ -193,8 +186,8 @@ const ResearchList = ({ research }) => {
                   <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-2">
                     <TruncatedTitle title={item.title} />
                     <Badge 
-                      variant={item.status === 'under-review' ? 'under-review' : item.status} 
-                      className="w-fit"
+                    variant={"outline"}
+                      className="w-fit md:ml-8 -ml-0.5"
                     >
                       {item.status === 'under-review' ? 'Under Review' : 
                        item.status === 'active' ? 'Active' : 'Discontinued'}
