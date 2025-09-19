@@ -13,7 +13,7 @@ import Link from "next/link";
 const zenDots = Zen_Dots({ subsets: ["latin"], weight: "400" });
 const Hero = () => {
   return (
-    <div className="mx-auto flex flex-col gap-10 md:w-[800px]">
+    <div className="mx-auto flex flex-col gap-10 md:max-w-5xl">
       <div className="flex flex-col justify-center gap-10 md:flex-row md:justify-between">
         <div className="order-last md:order-1 md:w-[500px]">
           <div

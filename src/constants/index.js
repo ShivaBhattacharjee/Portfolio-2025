@@ -11,6 +11,10 @@ export const navLinks = [
     path: "/experience",
     name: "Experience",
   },
+  {
+    path: "/research",
+    name: "Research",
+  },
 ];
 
 export const intros = [
@@ -192,7 +196,42 @@ export const projects = [
     description : "Muxik is a music streaming and downloading platform. Made using a scrapped JioSaavn API, I created it because I couldn't afford Spotify. I shut it down because I got an internship and could finally afford Apple Music, LFG! 🔥",
     techstacks : ["Vite", "MongoDb"],
     status: "discontinued",
-    link : "https://github.com/shivabhattacharjee/muxik"
   },
+];
+
+export const research = [
+  {
+    title: "PolySpeech-HS: Multilingual Non-Autoregressive Text-to-Speech Synthesis with Hidden-State Adapters",
+    category: "Speech Synthesis & Multilingual AI",
+    description: "A non-autoregressive text-to-speech (TTS) multilingual synthesis framework designed to address the linguistic diversity and real-time deployment challenges of Indian languages. By deploying a unified encoder-decoder architecture paired with lightweight hidden-state adapters, PolySpeech-HS enables efficient cross-lingual generalization while preserving language-specific prosodic nuances. Achieved state-of-the-art performance with MOS of 4.30, MCD of 4.7 dB, and RTF of 0.13 across six Indian languages.",
+    techstacks: ["TTS", "Non-Autoregressive", "Hidden-State Adapters", "Multilingual AI", "Indian Languages", "AMO-HSA"],
+    status: "under-review",
+    link: "#",
+    journal: "IEEE Transactions on Audio, Speech and Language Processing",
+    year: "2025",
+    collaboration: "Vellore Institute of Technology"
+  },
+  {
+    title: "A Novel Data-Centric Transformer Fine-Tuning: A Modular Framework for Rapid Domain Adaptation and Deployment",
+    category: "Large Language Models & Domain Adaptation",
+    description: "This research demonstrates a data-centric, hardware-light workflow for fine-tuning transformers that sidesteps the drawbacks of costly LLM APIs. By automatically scraping high-signal web content and converting it into Q&A pairs, we fine-tune a GPT-2-Medium model (355M parameters) in ≈7 minutes on a single RTX-3060. The resulting assistant achieves 67.3% accuracy (+34% over base model) with 1.4s median latency and $0 per call cost.",
+    techstacks: ["GPT-2", "LoRA", "8-bit Adam", "Domain Adaptation", "Next.js", "Q&A Generation", "Fine-tuning"],
+    status: "under-review",
+    link: "#",
+    journal: "IEEE Transactions on Computational Social Systems",
+    year: "2025",
+    collaboration: "Vellore Institute of Technology"
+  },
+  {
+    title: "Fine-Tuning Mistral 22B: The First Large Language Model for Assamese Language Tasks",
+    category: "Low-Resource Language Processing",
+    description: "The first fine-tuned Large Language Model specifically engineered for Assamese, a low-resource Indo-Aryan language spoken by approximately 15 million individuals. Introduces AssamText-750K dataset and custom Unicode mapping system exclusively for Assamese. This pioneering work becomes the first and only Assamese LLM backed by language-specific Unicode infrastructure, achieving 20% average improvement across text generation fluency, sentiment analysis accuracy, and Assamese-to-English translation quality.",
+    techstacks: ["Mistral 22B", "LoRA", "Unicode Mapping", "Assamese NLP", "Low-Resource Languages", "AssamText-750K"],
+    status: "under-review",
+    link: "#",
+    journal: "IEEE Transactions on Neural Networks and Learning Systems",
+    year: "2025",
+    collaboration: "Vellore Institute of Technology"
+  }
 ];
 
