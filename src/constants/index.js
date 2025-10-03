@@ -69,7 +69,7 @@ export const experiences = [
     ],
   },
   {
-    role: "Member of technical stuff",
+    role: "Member of technical staff",
     year: "Jan 2025 - July 2025",
     company: "Navdyut AI Tech and Research Labs Pvt. Ltd.",
     responsibility:
