@@ -109,8 +109,8 @@ export async function GET() {
   const rssXml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Shiva Bhattacharjee - Full Stack Developer & Researcher</title>
-    <description>Hello there I am Shiva a full stack developer and researcher. I love to build products that make people's life easier. Explore my projects, research publications, experience, and journey in software development and AI research.</description>
+    <title>Shiva Bhattacharjee - Full Stack Developer &amp; Researcher</title>
+    <description>Hello there I am Shiva a full stack developer and researcher. I love to build products that make people&apos;s life easier. Explore my projects, research publications, experience, and journey in software development and AI research.</description>
     <link>${siteUrl}</link>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
