@@ -119,10 +119,10 @@ export const projects = [
   {
     title : "Image Sonification",
     category: "Research Project",
-    description: "This app converts images to audio and back , using NASA-inspired sonification. It embeds all image data directly in the sound (Donot hear the audio with IEMS on may make you go deaf), letting you recreate the picture from just the audio file. Essentially, it's \"audio DNA\" for images!.",
-    techstacks: ["Python", ],
+    description: "This app converts images to audio and vice versa. Sonification is the process of converting data from one form, like visual data from images, into sound.  Each pixel’s colour and position are mapped to specific audio frequencies and characteristics, creating a unique sound representation of the image.",
+    techstacks: ["Reactjs", "TS" ],
     status: "active",
-    link: "https://github.com/ShivaBhattacharjee/imagesonification"
+    link: "https://sonification.shiva.codes"
   },
   {
     title : "Object Detection",
