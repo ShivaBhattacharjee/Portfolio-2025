@@ -14,11 +14,25 @@ const pressStartFont = Press_Start_2P({subsets: ["latin"], weight : "400"});
 const zenDots = Zen_Dots({subsets: ["latin"], weight : "400"});
 const NavigationBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navMenuRef = useRef(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -54,7 +68,12 @@ const NavigationBar = () => {
 
   return (
     <>
-      <div className="container z-20 flex justify-between gap-5 py-8">
+      <div className="h-24 lg:hidden" />
+      <div
+        className={`fixed top-0 left-0 right-0 z-20 flex justify-between gap-5 px-4 md:px-8 transition-colors duration-300 ease-in-out lg:relative lg:bg-transparent ${
+          isScrolled ? "bg-main backdrop-blur-sm lg:bg-transparent" : "bg-transparent"
+        }`}
+      >
         <Toggle />
         <nav className="max-container flex items-center justify-end">
           <div className="hidden md:block">

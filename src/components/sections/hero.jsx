@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
 import _ from "lodash";
-import { FaClipboard, FaDiscord, FaGithub, FaTwitter } from "react-icons/fa6";
+import { FaClipboard, FaDiscord, FaGithub,  } from "react-icons/fa6";
+import { RiTwitterXLine } from "react-icons/ri";
 import { IoIosMail } from "react-icons/io";
 import { Button } from "@/components/ui/button";
 import ContactDialog from "@/components/layout/contact-dialog";
@@ -20,13 +21,12 @@ const Hero = () => {
             className={`mb-6 flex flex-col gap-y-2 text-center md:text-start ${zenDots.className}`}
           >
             <h1 className={`text-3xl md:text-4xl font-bold`}>Shiva Bhattacharjee</h1>
-            <h2 className={`text-sm md:text-xl font-medium`}>
-              Full Stack + AI Engineer & Part-time Researcher
+            <h2 className={`text-sm md:text-xl font-medium uppercase tracking-widest`}>
+              Applied AI Engineer
             </h2>
-            <p className={`${zenDots.className} text-sm md:text-base`}>
-              I build functional and beautiful applications with intuitive
-              UI/UX. I also research SLMs and computer vision, with 5+ research
-              projects.
+            <p className={`text-sm md:text-base leading-relaxed opacity-90`}>
+              I build AI agents and workflows. I also work on fine-tuning
+              pipelines, prompt engineering, and computer vision research.
             </p>
           </div>
           <div
@@ -53,7 +53,7 @@ const Hero = () => {
               <FaGithub size="24px" className="opacity-60 hover:opacity-100" />
             </a>
             <a href="https://x.com/sh17va" target="_blank">
-              <FaTwitter size="24px" className="opacity-60 hover:opacity-100" />
+              <RiTwitterXLine size="24px" className="opacity-60 hover:opacity-100" />
             </a>
             <a href="mailto:hello@theshiva.xyz" target="_blank">
               <IoIosMail size="24px" className="opacity-60 hover:opacity-100" />
@@ -83,18 +83,21 @@ const Hero = () => {
             About Me
           </h5>
           <p className="mb-4 text-sm md:text-lg">
-            I&apos;m a 20-year-old Full Stack + AI Engineer and Part-time
-            Researcher passionate about building innovative solutions. My
-            expertise lies in developing and deploying full-stack applications
-            with a focus on intuitive UI/UX, as well as conducting research in
-            SLMs and Computer Vision. I have contributed to 5+ research
-            projects, exploring applications of computer vision and SLMs, and
-            developing fine-tuning pipelines for SLMs and LLMs. I am driven to
-            create impactful technology that solves real-world problems.
+            I&apos;m a 20-year-old Full Stack + AI Engineer who builds
+            production-ready AI systems and researches SLMs and Computer Vision.
+            Currently, I&apos;m working at an AI-powered jewelry creation startup,
+            building generative design pipelines and multi-modal AI workflows
+            that transform creative concepts into 3D-ready assets. I work with
+            OpenAI, Claude, and open-source models to create agentic workflows
+            using LangChain and Vercel AI SDK. I&apos;ve contributed to 5+
+            research projects and developed fine-tuning pipelines for both SLMs
+            and LLMs.
           </p>
         </div>
       </div>
-      <GitHubStreak />
+  
+     <GitHubStreak />
+    
     </div>
   );
 };

@@ -431,7 +431,7 @@ const Streaks = ({
 
   return (
     <div
-      className={`${pressStartFont.className} relative m-auto w-full max-w-3xl overflow-hidden border-4 border-black font-mono shadow-[8px_8px_0px_0px_rgba(128,128,128,0.8)] dark:border-white ${className}`}
+      className={`${pressStartFont.className} relative m-auto w-full max-w-6xl overflow-hidden border-4 border-black font-mono shadow-[8px_8px_0px_0px_rgba(128,128,128,0.8)] dark:border-white ${className}`}
     >
       <div className="absolute bottom-0 right-0 top-0 w-4 bg-black/20"></div>
 
