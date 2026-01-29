@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import TransitionLink from "@/components/TransitionLink";
 
 import { Button } from "@/components/ui/button";
 import Toggle from "@/components/toggle";
@@ -81,9 +81,9 @@ const NavigationBar = () => {
               {navLinks.map((navLink, index) => {
                 return (
                   <li key={index} className={` ${pressStartFont.className} uppercase`}>
-                    <Link href={navLink.path}>
+                    <TransitionLink href={navLink.path}>
                       <p className="text-md font-cera">{navLink.name}</p>
-                    </Link>
+                    </TransitionLink>
                   </li>
                 );
               })}
@@ -117,16 +117,11 @@ const NavigationBar = () => {
               {navLinks.map((navLink, index) => {
                 return (
                   <li key={index} className={`${pressStartFont.className}  uppercase`}>
-                    <Link href={navLink.path}>
-                      <p
-                        className="font-cera text-2xl"
-                        onClick={() => {
-                          setIsMenuOpen(false);
-                        }}
-                      >
+                    <TransitionLink href={navLink.path} onClick={() => setIsMenuOpen(false)}>
+                      <p className="font-cera text-2xl">
                         {navLink.name}
                       </p>
-                    </Link>
+                    </TransitionLink>
                   </li>
                 );
               })}

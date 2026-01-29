@@ -2,10 +2,8 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Link from "next/link";
 
 import { FaCodeBranch, FaRegStar } from "react-icons/fa6";
-import { Rss } from "lucide-react";
 
 const Footer = () => {
   const [year, setYear] = useState(new Date().getFullYear());
