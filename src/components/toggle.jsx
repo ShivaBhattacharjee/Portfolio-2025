@@ -15,10 +15,10 @@ const Toggle = () => {
   };
 
   const toggleMode = () => {
-    //@ts-ignore
-    if (!document.startViewTransition) switchTheme();
-
-    //@ts-ignore
+    if (!document.startViewTransition) {
+      switchTheme();
+      return;
+    }
     document.startViewTransition(switchTheme);
   };
 
