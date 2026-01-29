@@ -113,7 +113,7 @@ h6 {
 @supports (view-transition-name: none) {
   ::view-transition-old(root),
   ::view-transition-new(root) {
-    animation-duration: 0.35s;
+    animation-duration: 0.3s;
     animation-timing-function: steps(4, jump-none);
   }
 
@@ -139,5 +139,39 @@ h6 {
     50% { clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%); }
     75% { clip-path: polygon(0 25%, 100% 25%, 100% 100%, 0 100%); }
     100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+  }
+
+  @media (max-width: 768px) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation-duration: 0.3s;
+      animation-timing-function: steps(5, jump-none);
+    }
+
+    ::view-transition-old(root) {
+      animation-name: scanline-out;
+    }
+
+    ::view-transition-new(root) {
+      animation-name: scanline-in;
+    }
+
+    @keyframes scanline-out {
+      0% { clip-path: inset(0 0 0 0); opacity: 1; }
+      20% { clip-path: inset(0 0 0 0); opacity: 0.8; }
+      40% { clip-path: inset(20% 0 20% 0); opacity: 0.6; }
+      60% { clip-path: inset(35% 0 35% 0); opacity: 0.4; }
+      80% { clip-path: inset(45% 0 45% 0); opacity: 0.2; }
+      100% { clip-path: inset(50% 0 50% 0); opacity: 0; }
+    }
+
+    @keyframes scanline-in {
+      0% { clip-path: inset(50% 0 50% 0); opacity: 0; }
+      20% { clip-path: inset(45% 0 45% 0); opacity: 0.2; }
+      40% { clip-path: inset(35% 0 35% 0); opacity: 0.4; }
+      60% { clip-path: inset(20% 0 20% 0); opacity: 0.6; }
+      80% { clip-path: inset(0 0 0 0); opacity: 0.8; }
+      100% { clip-path: inset(0 0 0 0); opacity: 1; }
+    }
   }
 }
