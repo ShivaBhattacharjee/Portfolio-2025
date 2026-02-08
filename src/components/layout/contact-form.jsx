@@ -16,8 +16,7 @@ import {
 } from "@/components/ui/form";
 import { FaArrowRight } from "react-icons/fa6";
 import { Press_Start_2P, Zen_Dots } from "next/font/google";
-const zenDots = Zen_Dots({ subsets: ["latin"], weight: "400" });
-const pressStartFont = Press_Start_2P({ subsets: ["latin"], weight: "400" });
+import { GeistPixelSquare } from "geist/font/pixel";
 
 const formSchema = z.object({
   fullname: z.string().min(1, "Full name is required"),
@@ -44,10 +43,10 @@ const form = useForm({
 
   return (
     <>
-      <Form {...form} className={`${pressStartFont.className}`}>
+      <Form {...form} className={`${GeistPixelSquare.className}`}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className={`mt-4 space-y-4 ${pressStartFont.className}`}
+          className={`mt-4 space-y-4 ${GeistPixelSquare.className}`}
         >
           <FormField
             control={form.control}
@@ -129,13 +128,13 @@ const form = useForm({
         </form>
       </Form>
       <div className="flex flex-col gap-4">
-        <h1 className={`text-center ${pressStartFont.className} `}>
+        <h1 className={`text-center ${GeistPixelSquare.className} `}>
           --------OR--------
         </h1>
         <a
           href="https://cal.com/shivabhattacharjee"
           target="_blank"
-          className={`${zenDots.className}`}
+          className={`${GeistPixelSquare.className}`}
         >
           <Button size="lg" className="w-full">
             Schedule a meeting <FaArrowRight className="ml-2" size="14px" />

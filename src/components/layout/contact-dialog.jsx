@@ -12,8 +12,7 @@ import ContactForm from "./contact-form";
 import { Button } from "../ui/button";
 import { useToast } from "../ui/use-toast";
 import { FaArrowRight } from "react-icons/fa6";
-import { Press_Start_2P } from "next/font/google";
-const pressStartFont = Press_Start_2P({ subsets: ["latin"], weight: "400" });
+import { GeistPixelSquare } from "geist/font/pixel";
 
 const ContactDialog = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,7 +65,7 @@ const ContactDialog = () => {
             Contact Me <FaArrowRight className="ml-2" size="14px" />
           </Button>
         </DialogTrigger>
-        <DialogContent className={`${pressStartFont.className} text-sm`}>
+        <DialogContent className={`${GeistPixelSquare.className} text-sm`}>
           <DialogHeader>
             <DialogTitle>Contact Me</DialogTitle>
             <DialogDescription>
