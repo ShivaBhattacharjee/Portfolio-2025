@@ -1,4 +1,3 @@
-import { Libre_Baskerville, Zen_Dots, Goldman } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import NavigationBar from "@/components/sections/navigation";
@@ -76,7 +75,8 @@ export const metadata = {
     },
   },
 };
-const goldmanFont = Goldman({ subsets: ["latin"], weight: "400" });
+
+import { GeistPixelSquare } from "geist/font/pixel";
 
 export default function RootLayout({ children }) {
   const jsonLd = {
@@ -108,7 +108,7 @@ export default function RootLayout({ children }) {
         >
           <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto] overflow-x-hidden">
             <NavigationBar />
-            <main className={goldmanFont.className}>
+            <main className={GeistPixelSquare.className}>
               <OnekoCat/>
               {children}
               <FloatingSkull />

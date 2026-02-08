@@ -7,11 +7,11 @@ import TransitionLink from "@/components/TransitionLink";
 import { Button } from "@/components/ui/button";
 import Toggle from "@/components/toggle";
 
-import { FaArrowRight, FaBars, FaXmark } from "react-icons/fa6";
+import {  FaBars, FaXmark } from "react-icons/fa6";
 import { navLinks } from "@/constants";
-import {Press_Start_2P, Zen_Dots} from "next/font/google"
+import {Press_Start_2P} from "next/font/google"
 const pressStartFont = Press_Start_2P({subsets: ["latin"], weight : "400"});
-const zenDots = Zen_Dots({subsets: ["latin"], weight : "400"});
+
 const NavigationBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);

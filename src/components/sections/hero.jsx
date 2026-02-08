@@ -6,11 +6,12 @@ import { RiTwitterXLine } from "react-icons/ri";
 import { IoIosMail } from "react-icons/io";
 import { Button } from "@/components/ui/button";
 import ContactDialog from "@/components/layout/contact-dialog";
-import { Goldman, Zen_Dots } from "next/font/google";
+import {  Zen_Dots } from "next/font/google";
 import { toast } from "../ui/use-toast";
 import GitHubStreak from "../Streaks";
 import { Rss } from "lucide-react";
 import Link from "next/link";
+import { GeistPixelSquare } from "geist/font/pixel";
 const zenDots = Zen_Dots({ subsets: ["latin"], weight: "400" });
 const Hero = () => {
   return (
@@ -18,7 +19,7 @@ const Hero = () => {
       <div className="flex flex-col justify-center gap-10 md:flex-row md:justify-between">
         <div className="order-last md:order-1 md:w-[500px]">
           <div
-            className={`mb-6 flex flex-col gap-y-2 text-center md:text-start ${zenDots.className}`}
+            className={`mb-6 flex flex-col gap-y-2 text-center md:text-start ${GeistPixelSquare.className}`}
           >
             <h1 className={`text-3xl md:text-4xl font-bold`}>Shiva Bhattacharjee</h1>
             <h2 className={`text-sm md:text-xl font-medium uppercase tracking-widest`}>
@@ -30,7 +31,7 @@ const Hero = () => {
             </p>
           </div>
           <div
-            className={`flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0 ${zenDots.className}`}
+            className={`flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0 ${GeistPixelSquare.className}`}
           >
             <ContactDialog />
             <Button
