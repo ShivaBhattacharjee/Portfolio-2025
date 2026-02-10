@@ -327,7 +327,8 @@ const Streaks = ({ initialUsername = "shivabhattacharjee", className = "" }) => 
                 <span className="md:text-4xl text-2xl font-black dark:text-white text-black">
                   {streakData.totalContributions}
                 </span>
-                <div className="mt-1 px-2 text-xs md:text-sm dark:text-white text-black">contributions</div>
+               
+                <div className="mt-1 px-2 text-xs md:text-sm dark:text-white text-black block ">commits</div>
               </div>
             </div>
 
