@@ -14,18 +14,16 @@ const Projects = () => {
       title="Projects"
       subtitle="A collection of things I've built."
     >
-      <div className="flex flex-col">
-        <div className="flex flex-wrap w-full  justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="flex w-full justify-stretch py-2 md:w-[370px] md:px-6 md:py-6"
+              className="flex w-full  py-2 md:px-6 md:py-6"
             >
               <ProjectCard {...project} />
             </div>
           ))}
-        </div>
-      </div>
+          </div>
     </Layout>
   );
 };

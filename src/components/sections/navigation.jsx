@@ -3,11 +3,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TransitionLink from "@/components/TransitionLink";
-
+import { MdOutlineRestaurantMenu } from "react-icons/md";
+import { FaHamburger } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import Toggle from "@/components/toggle";
-
-import {  FaBars, FaXmark } from "react-icons/fa6";
+import { HiOutlineMenuAlt2 } from "react-icons/hi";
+import { FaXmark } from "react-icons/fa6";
 import { navLinks } from "@/constants";
 import {Press_Start_2P} from "next/font/google"
 const pressStartFont = Press_Start_2P({subsets: ["latin"], weight : "400"});
@@ -94,7 +95,7 @@ const NavigationBar = () => {
             className="hidden max-lg:block"
             onClick={toggleMenu}
           >
-            {isMenuOpen ? <FaXmark size="20px" /> : <FaBars size="20px" />}
+            {isMenuOpen ? <MdOutlineRestaurantMenu size="20px" /> : <FaHamburger size="20px" />}
           </Button>
         </nav>
       </div>

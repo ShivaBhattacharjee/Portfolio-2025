@@ -108,7 +108,7 @@ export default function RootLayout({ children }) {
         >
           <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto] overflow-x-hidden">
             <NavigationBar />
-            <main className={GeistPixelSquare.className}>
+            <main className={`${GeistPixelSquare.className} px-6 md:px-0`}>
               <OnekoCat/>
               {children}
               <FloatingSkull />

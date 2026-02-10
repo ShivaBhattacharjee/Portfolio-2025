@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import _ from "lodash";
-import { FaClipboard, FaDiscord, FaGithub,  } from "react-icons/fa6";
+import { FaClipboard, FaDiscord, FaGithub, FaLinkedin,  } from "react-icons/fa6";
 import { RiTwitterXLine } from "react-icons/ri";
 import { IoIosMail } from "react-icons/io";
 import { Button } from "@/components/ui/button";
@@ -12,10 +12,11 @@ import GitHubStreak from "../Streaks";
 import { Rss } from "lucide-react";
 import Link from "next/link";
 import { GeistPixelSquare } from "geist/font/pixel";
+import { GithubGraph } from "../github-graph";
 const zenDots = Zen_Dots({ subsets: ["latin"], weight: "400" });
 const Hero = () => {
   return (
-    <div className="mx-auto flex flex-col gap-10 md:max-w-5xl">
+    <div className="mx-auto flex flex-col gap-10 md:max-w-4xl">
       <div className="flex flex-col justify-center gap-10 md:flex-row md:justify-between">
         <div className="order-last md:order-1 md:w-[500px]">
           <div
@@ -50,21 +51,18 @@ const Hero = () => {
             </Button>
           </div>
           <div className="mt-10 flex justify-center space-x-5 md:justify-start">
-            <a href="https://github.com/shivabhattacharjee" target="_blank">
-              <FaGithub size="24px" className="opacity-60 hover:opacity-100" />
-            </a>
             <a href="https://x.com/sh17va" target="_blank">
               <RiTwitterXLine size="24px" className="opacity-60 hover:opacity-100" />
+            </a>
+            <a href="https://www.linkedin.com/in/shiva-bhattacharjee/" target="_blank">
+              <FaLinkedin size="24px" className="opacity-60 hover:opacity-100" />
             </a>
             <a href="mailto:hello@theshiva.xyz" target="_blank">
               <IoIosMail size="24px" className="opacity-60 hover:opacity-100" />
             </a>
-            <a
-              href="https://discord.com/users/503152077824851968"
-              target="_blank"
-            >
-              <FaDiscord size="24px" className="opacity-60 hover:opacity-100"/>
-              </a>
+            <a href="https://github.com/shivabhattacharjee" target="_blank">
+              <FaGithub size="24px" className="opacity-60 hover:opacity-100" />
+            </a>
             <Link
               href="/rss.xml"
               target="_blank"

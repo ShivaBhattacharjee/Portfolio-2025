@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 
 const Projects = ({ category, title, description, techstacks, status, link }) => {
   return (
-    <Card className="flex grow flex-col">
+    <Card className="">
       <CardHeader>
         <>
           <div className="flex items-center justify-between">

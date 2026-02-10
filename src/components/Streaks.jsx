@@ -53,7 +53,80 @@ const cache = {
     } catch {}
     return null;
   },
-};
+}
+
+async function fetchContributionData(username) {
+  try {
+    const response = await fetch(`/api/github/contributions/${encodeURIComponent(username)}`)
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
+    const responseBody = await response.json()
+    if (!responseBody.data) throw new Error("No contribution data received")
+    return responseBody.data
+  } catch (error) {
+    if (error instanceof Error) console.error("Error fetching GitHub contributions:", error.message)
+    return []
+  }
+}
+
+function calculateStreaksFromContributions(contribution) {
+  if (!contribution?.length) return { currentStreak: 0, longestStreak: 0, longestStreakThisYear: 0 }
+  const dateToCount = new Map(contribution.map((c) => [c.date, c.count ?? 0]))
+  const totalContributions = contribution.reduce((sum, c) => sum + (c.count ?? 0), 0)
+  const sortedDates = contribution
+    .filter((c) => (c.count ?? 0) > 0)
+    .map((c) => c.date)
+    .sort()
+
+  const today = new Date().toISOString().split("T")[0]
+  let currentStreak = 0
+  let checkDate = today
+  while ((dateToCount.get(checkDate) ?? 0) > 0) {
+    currentStreak++
+    const next = new Date(checkDate)
+    next.setDate(next.getDate() - 1)
+    checkDate = next.toISOString().split("T")[0]
+  }
+
+  let longestStreak = sortedDates.length ? 1 : 0
+  let streak = 1
+  for (let i = 1; i < sortedDates.length; i++) {
+    const diff = (new Date(sortedDates[i]) - new Date(sortedDates[i - 1])) / 86400000
+    streak = diff === 1 ? streak + 1 : 1
+    longestStreak = Math.max(longestStreak, streak)
+  }
+
+  const currentYear = new Date().getFullYear()
+  const thisYearDates = sortedDates.filter((d) => new Date(d).getFullYear() === currentYear)
+  let longestStreakThisYear = thisYearDates.length ? 1 : 0
+  streak = 1
+  for (let i = 1; i < thisYearDates.length; i++) {
+    const diff = (new Date(thisYearDates[i]) - new Date(thisYearDates[i - 1])) / 86400000
+    streak = diff === 1 ? streak + 1 : 1
+    longestStreakThisYear = Math.max(longestStreakThisYear, streak)
+  }
+
+  return {
+    currentStreak,
+    longestStreak,
+    longestStreakThisYear,
+    totalContributions,
+    dateToCount,
+  }
+}
+
+function buildLastWeekData(dateToCount) {
+  const dailyCommits = Object.fromEntries(days.map((d) => [d, 0]))
+  const now = new Date()
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(now)
+    d.setDate(d.getDate() - i)
+    const dateStr = d.toISOString().split("T")[0]
+    const count = dateToCount.get(dateStr) ?? 0
+    const dayIndex = (d.getDay() + 6) % 7
+    dailyCommits[days[dayIndex]] += count
+  }
+  return days.map((day) => ({ day, commits: dailyCommits[day] }))
+}
 
 const Streaks = ({ initialUsername = "shivabhattacharjee", className = "" }) => {
   const [username, setUsername] = useState(initialUsername);
@@ -70,141 +143,56 @@ const Streaks = ({ initialUsername = "shivabhattacharjee", className = "" }) => 
   });
   const [rateLimit, setRateLimit] = useState({ reset: null });
 
-  const getHeaders = () => ({
-    Accept: "application/vnd.github.v3+json",
-    Authorization: `token ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
-  });
-
-  const processRateLimitInfo = (response) => {
-    const reset = response.headers.get("x-ratelimit-reset");
-    if (reset) setRateLimit({ reset: new Date(parseInt(reset) * 1000) });
-  };
-
   const formatResetTime = (resetDate) => {
-    if (!resetDate) return "Unknown";
-    const diffMins = Math.round((resetDate - new Date()) / 60000);
-    if (diffMins <= 0) return "Any moment now";
-    if (diffMins === 1) return "1 minute";
-    if (diffMins < 60) return `${diffMins} minutes`;
-    return `${Math.floor(diffMins / 60)}h ${diffMins % 60}m`;
-  };
+    if (!resetDate) return "Unknown"
+    const diffMins = Math.round((resetDate - new Date()) / 60000)
+    if (diffMins <= 0) return "Any moment now"
+    if (diffMins === 1) return "1 minute"
+    if (diffMins < 60) return `${diffMins} minutes`
+    return `${Math.floor(diffMins / 60)}h ${diffMins % 60}m`
+  }
 
   const fetchGitHubData = async (user) => {
-    const cacheKey = `github-streak-${user}`;
-    const cachedData = cache.get(cacheKey);
+    const cacheKey = `github-streak-${user}`
+    const cachedData = cache.get(cacheKey)
 
     if (cachedData) {
-      setStreakData({ ...cachedData, loading: false, lastUpdated: new Date(cachedData.timestamp) });
-      return;
+      setStreakData({ ...cachedData, loading: false, lastUpdated: new Date(cachedData.timestamp) })
+      return
     }
 
     try {
-      setStreakData((prev) => ({ ...prev, loading: true }));
+      setStreakData((prev) => ({ ...prev, loading: true }))
 
-      const userResponse = await fetch(`https://api.github.com/users/${user}`, { headers: getHeaders() });
-      processRateLimitInfo(userResponse);
-
-      if (!userResponse.ok) {
-        throw new Error(userResponse.status === 404 ? "User not found" : `GitHub API error: ${userResponse.status}`);
+      const contribution = await fetchContributionData(user)
+      if (!contribution.length) {
+        throw new Error("No contribution data received")
       }
 
-      const getAllRepos = async (username) => {
-        let allRepos = [];
-        let page = 1;
-        while (true) {
-          const res = await fetch(
-            `https://api.github.com/users/${username}/repos?page=${page}&per_page=100&sort=updated`,
-            { headers: getHeaders() }
-          );
-          processRateLimitInfo(res);
-          if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
-          const data = await res.json();
-          if (data.length === 0) break;
-          allRepos = allRepos.concat(data);
-          if (data.length < 100) break;
-          page++;
-        }
-        return allRepos;
-      };
+      const {
+        currentStreak,
+        longestStreak,
+        longestStreakThisYear,
+        totalContributions,
+        dateToCount,
+      } = calculateStreaksFromContributions(contribution)
 
-      const allRepos = await getAllRepos(user);
-      const totalStars = allRepos.reduce((acc, repo) => acc + repo.stargazers_count, 0);
-
-      const calculateStreaks = (events) => {
-        const currentYear = new Date().getFullYear();
-        const commitDates = new Set();
-
-        events.forEach((event) => {
-          if (event.type === "PushEvent") {
-            commitDates.add(new Date(event.created_at).toISOString().split("T")[0]);
-          }
-        });
-
-        const sortedDates = Array.from(commitDates).sort();
-        if (sortedDates.length === 0) return { currentStreak: 0, longestStreak: 0, longestStreakThisYear: 0 };
-
-        let currentStreak = 0;
-        let checkDate = new Date();
-        while (commitDates.has(checkDate.toISOString().split("T")[0])) {
-          currentStreak++;
-          checkDate.setDate(checkDate.getDate() - 1);
-        }
-
-        let longestStreak = 1;
-        let streak = 1;
-        for (let i = 1; i < sortedDates.length; i++) {
-          const diff = (new Date(sortedDates[i]) - new Date(sortedDates[i - 1])) / 86400000;
-          streak = diff === 1 ? streak + 1 : 1;
-          longestStreak = Math.max(longestStreak, streak);
-        }
-
-        const thisYearDates = sortedDates.filter((d) => new Date(d).getFullYear() === currentYear);
-        let longestStreakThisYear = thisYearDates.length ? 1 : 0;
-        streak = 1;
-        for (let i = 1; i < thisYearDates.length; i++) {
-          const diff = (new Date(thisYearDates[i]) - new Date(thisYearDates[i - 1])) / 86400000;
-          streak = diff === 1 ? streak + 1 : 1;
-          longestStreakThisYear = Math.max(longestStreakThisYear, streak);
-        }
-
-        return { currentStreak, longestStreak, longestStreakThisYear };
-      };
-
-      const eventsResponse = await fetch(`https://api.github.com/users/${user}/events/public?per_page=100`, {
-        headers: getHeaders(),
-      });
-      processRateLimitInfo(eventsResponse);
-      const eventsData = await eventsResponse.json();
-
-      const lastWeek = new Date();
-      lastWeek.setDate(lastWeek.getDate() - 7);
-
-      const dailyCommits = Object.fromEntries(days.map((d) => [d, 0]));
-
-      eventsData.forEach((event) => {
-        if (event.type === "PushEvent") {
-          const eventDate = new Date(event.created_at);
-          if (eventDate > lastWeek) {
-            const dayIndex = (eventDate.getDay() + 6) % 7;
-            dailyCommits[days[dayIndex]] += event.payload.commits?.length || 1;
-          }
-        }
-      });
-
-      const streaks = calculateStreaks(eventsData);
+      const lastWeekData = buildLastWeekData(dateToCount)
 
       const result = {
-        ...streaks,
-        totalContributions: totalStars,
-        lastWeekData: days.map((day) => ({ day, commits: dailyCommits[day] })),
+        currentStreak,
+        longestStreak,
+        longestStreakThisYear,
+        totalContributions,
+        lastWeekData,
         loading: false,
         timestamp: Date.now(),
         error: null,
         isSimulated: false,
-      };
+      }
 
-      cache.set(cacheKey, result);
-      setStreakData({ ...result, lastUpdated: new Date() });
+      cache.set(cacheKey, result)
+      setStreakData({ ...result, lastUpdated: new Date() })
     } catch (error) {
       setStreakData({
         currentStreak: 0,
@@ -214,15 +202,15 @@ const Streaks = ({ initialUsername = "shivabhattacharjee", className = "" }) => 
         lastWeekData: days.map((day) => ({ day, commits: 0 })),
         loading: false,
         lastUpdated: new Date(),
-        error: error.message,
-        isRateLimitError: error.message.includes("rate limit"),
-      });
+        error: error instanceof Error ? error.message : "Failed to load contribution data",
+        isRateLimitError: false,
+      })
     }
-  };
+  }
 
   useEffect(() => {
-    fetchGitHubData(username);
-  }, []);
+    fetchGitHubData(username)
+  }, [username])
 
   const handleUsernameSubmit = (e) => {
     e.preventDefault();
@@ -339,7 +327,7 @@ const Streaks = ({ initialUsername = "shivabhattacharjee", className = "" }) => 
                 <span className="md:text-4xl text-2xl font-black dark:text-white text-black">
                   {streakData.totalContributions}
                 </span>
-                <div className="mt-1 px-2 text-xs md:text-sm dark:text-white text-black">stars</div>
+                <div className="mt-1 px-2 text-xs md:text-sm dark:text-white text-black">contributions</div>
               </div>
             </div>
 
