@@ -8,7 +8,8 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import { Calendar, Flame, Trophy, GitCommit, Github, Search } from "lucide-react";
+import { Flame, Trophy, GitCommit, Github, Search } from "lucide-react";
+import Image from "next/image";
 import {
   Dialog,
   DialogContent,
@@ -230,7 +231,7 @@ const Streaks = ({ initialUsername = "shivabhattacharjee", className = "" }) => 
       <div className="relative z-0 border-b-4 border-black dark:border-white p-4 text-black dark:text-white">
         <div className="flex flex-wrap gap-2 items-center justify-between">
           <h2 className="flex items-center font-black uppercase tracking-tight text-sm md:text-base">
-            <Calendar size={24} className="mr-2" />
+            <Image src="/image.png" alt="" width={24} height={24} className="mr-2 object-contain" />
             <span className="text-black dark:text-white px-2 py-1 text-sm md:text-base">LAST 7 DAYS</span>
           </h2>
 
