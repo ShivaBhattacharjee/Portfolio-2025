@@ -140,7 +140,7 @@ export default function RootLayout({ children }) {
           <SmoothScrollProvider>
             <div className="grid min-h-[100dvh] grid-rows-[1fr_auto] overflow-x-hidden">
               <main
-                className={`${GeistPixelSquare.className} max-w-[1800px] px-6 pt-14 md:mx-auto md:px-0 md:pt-24`}
+                className={`${GeistPixelSquare.className} w-full min-w-0 max-w-[1800px] px-6 pt-14 md:mx-auto md:px-0 md:pt-24`}
               >
                 <OnekoCat />
                 {children}

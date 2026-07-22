@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/layout";
-import Timeline from "@/components/layout/timeline";
+import { WorkExperience } from "@/components/sections/work-experience";
 import { experiences } from "@/constants";
 
 
@@ -24,11 +24,10 @@ const Experience = () => {
       title="Experiences"
       subtitle={`My journey as a software developer over ${totalYears}+ years`}
     >
-      <div>
-        {[...experiences].reverse().map((experience, index) => (
-          <Timeline {...experience} key={index} index={index} />
-        ))}
-      </div>
+      <WorkExperience
+        className="divide-y divide-black/[0.06] dark:divide-white/[0.06]"
+        experiences={[...experiences].reverse()}
+      />
     </Layout>
   );
 };
