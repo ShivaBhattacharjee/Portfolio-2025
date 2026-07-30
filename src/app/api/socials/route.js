@@ -50,7 +50,7 @@ export async function GET() {
         name: "Shiva Bhattacharjee",
         username: "Building AI Agents",
         avatar:
-          "https://pbs.twimg.com/profile_images/2040623093945864192/dur1Mty-_400x400.jpg",
+          "https://pbs.twimg.com/profile_images/2081013051483152385/9e6q10_G_400x400.jpg",
         banner:
           "https://pbs.twimg.com/profile_banners/1186556526917324800/1757151975/1500x500",
         bio: "",
