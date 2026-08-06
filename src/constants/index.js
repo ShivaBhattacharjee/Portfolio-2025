@@ -221,8 +221,8 @@ export const experiences = [
     ],
   },
   {
-    role: "Applied AI Engineer",
-    year: "July 2025 - Present",
+    role: "Software Engineer",
+    year: "Jul 2025 - Apr 2026",
     company: "Bez",
     type: "Full-Time",
     location: "New York, Remote",
@@ -330,6 +330,53 @@ export const experiences = [
       "Langfuse",
       "NextJS",
     ],
+  },
+  {
+    role: "Personal goal pursuit",
+    year: "Apr 2026 - Jun 2026",
+    company: "Career Break",
+    type: "Career Break",
+    location: "Remote",
+    responsibility: [
+      [
+        {
+          text: "Built various side projects and worked as a freelance consultant for a few startups.",
+        },
+      ],
+    ],
+    techstacks: [],
+  },
+  {
+    role: "Software Engineer",
+    year: "Jul 2026 - Present",
+    company: "Avenue Ticketing, Inc.",
+    type: "Full-Time",
+    location: "Hawaii, Remote",
+    website: "https://avenueticket.com",
+    logo: "/Company/avenue.png",
+    logoPadding: false,
+    responsibility: [
+      [
+        { text: "Building backend services with " },
+        { text: "Hono", bold: true },
+        {
+          text: " for event ticketing, payments, and organizer workflows.",
+        },
+      ],
+      [
+        { text: "Integrated " },
+        { text: "Meta tracking APIs", bold: true },
+        {
+          text: " (Conversions API / Pixel) for attribution, retargeting, and growth analytics across the funnel.",
+        },
+      ],
+      [
+        {
+          text: "Shipping product features across the ticketing platform — APIs, webhooks, and real-time event flows.",
+        },
+      ],
+    ],
+    techstacks: ["Hono", "Meta CAPI", "TypeScript", "Node.js", "React", "NextJS"],
   },
 ];
 

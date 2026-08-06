@@ -582,15 +582,15 @@ const Hero = ({ contributionData = [], lifetimeTotal = 0 }) => {
             now I&apos;m at{" "}
             <strong className="font-semibold text-foreground">
               <a
-                href="https://www.usebez.ai"
+                href="https://avenueticket.com"
                 target="_blank"
                 className="underline"
               >
-                Bez
+                Avenue
               </a>
             </strong>
-            , working on AI agent workflows, vector search, RAG memory, and
-            multimodal image pipelines.
+            , working on ticketing backend services, Meta tracking APIs, and
+            growth infrastructure.
           </p>
         </motion.div>
 

@@ -26,8 +26,9 @@ import {
   SiGooglegemini,
   SiNasa,
   SiVite,
+  SiTypescript,
 } from "react-icons/si";
-import { Database, Sparkles, Brain, Boxes, Network, Activity, Code2, Flame, Cpu, Eye, Cloud, Link2, Rocket, Volume2 } from "lucide-react";
+import { Database, Sparkles, Brain, Boxes, Network, Activity, Code2, Flame, Cpu, Eye, Cloud, Link2, Rocket, Volume2, Zap } from "lucide-react";
 
 // adaptive => use currentColor (good for monochrome brands so they stay visible in dark/light)
 const TECH_META = {
@@ -84,6 +85,10 @@ const TECH_META = {
   Hardhat: { Icon: Flame, color: "#F0B90B" },
   "Web3.js": { Icon: Link2, color: "#F16822" },
   "Web Audio API": { Icon: Volume2, color: "#8B5CF6" },
+
+  TypeScript: { Icon: SiTypescript, color: "#3178C6" },
+  Hono: { Icon: Zap, color: "#E36002" },
+  "Meta CAPI": { Icon: Network, color: "#0081FB" },
 };
 
 const DEFAULT = { Icon: Code2, adaptive: true };
